@@ -1,0 +1,998 @@
+<!DOCTYPE html>
+<html lang="pt" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Seringal Lab - Iniciativas Inovadoras</title>
+    <!-- Font Awesome para ícones -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- AOS (Animate On Scroll) CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" />
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@700&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Oswald:wght@200;300;400;500;600;700&display=swap');
+
+        /* Variáveis para temas */
+        :root {
+            --bg-color: #f4f4f4;
+            --text-color: #333333;
+            --header-bg: #015351;
+            --header-text: #ffffff;
+            --card-bg: #79b31f;
+            --card-text: #ffffff;
+            --accent-color: #a7ea26;
+            --shadow-color: rgba(0, 0, 0, 0.2);
+            --footer-bg: #015351;
+            --footer-text: #ffffff;
+            --input-bg: #ffffff;
+            --input-text: #333333;
+            --cookie-bg: #f5f5f5;
+            --cookie-text: #333333;
+            --transition-speed: 0.5s;
+        }
+
+        /* Tema escuro */
+        [data-theme="dark"] {
+            --bg-color: #1a1a1a;
+            --text-color: #f0f0f0;
+            --header-bg: #012e2c;
+            --header-text: #ffffff;
+            --card-bg: #517a15;
+            --card-text: #ffffff;
+            --accent-color: #8bc020;
+            --shadow-color: rgba(0, 0, 0, 0.5);
+            --footer-bg: #012e2c;
+            --footer-text: #ffffff;
+            --input-bg: #2c2c2c;
+            --input-text: #f0f0f0;
+            --cookie-bg: #2c2c2c;
+            --cookie-text: #f0f0f0;
+        }
+
+        /* Reset básico */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            transition: background-color var(--transition-speed), color var(--transition-speed);
+        }
+
+        /* Estilo base do body */
+        body {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            align-items: center;
+            min-height: 100vh;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            margin: 0;
+            padding-top: 60px;
+            box-sizing: border-box;
+            position: relative;
+        }
+
+        /* Header */
+        header {
+            background-color: var(--header-bg);
+            color: var(--header-text);
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 5%;
+            box-shadow: 0 2px 5px var(--shadow-color);
+            width: 100%;
+            position: fixed;
+            top: 0;
+            z-index: 1000;
+        }
+
+        /* Logo */
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+
+        .logo img {
+            max-width: 100%;
+            height: auto;
+            width: 250px;
+            max-height: 55px;
+        }
+
+        /* Menu de navegação */
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 50px;
+        }
+
+        .menu-toggle {
+            display: none;
+            font-size: 24px;
+            background: none;
+            border: none;
+            color: var(--header-text);
+            cursor: pointer;
+            padding: 10px;
+        }
+
+        .nav-menu li a {
+            text-decoration: none;
+            color: var(--header-text);
+            font-size: 15px;
+            font-family: 'Roboto', sans-serif;
+            position: relative;
+            transition: color 0.5s ease;
+        }
+
+        .nav-menu li a:hover {
+            color: var(--accent-color);
+        }
+
+        .nav-menu li a:hover::after {
+            content: "";
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background-color: var(--accent-color);
+        }
+
+        /* Área de pesquisa */
+        .search-container {
+            position: relative;
+            display: flex;
+            align-items: center;
+            margin-left: 20px;
+        }
+
+        .search-box {
+            padding: 8px 12px;
+            border-radius: 20px;
+            border: none;
+            background-color: var(--input-bg);
+            color: var(--input-text);
+            width: 0;
+            opacity: 0;
+            transition: width 0.3s ease, opacity 0.3s ease;
+        }
+
+        .search-box.active {
+            width: 200px;
+            opacity: 1;
+        }
+
+        .search-btn {
+            background: none;
+            border: none;
+            color: var(--header-text);
+            cursor: pointer;
+            font-size: 16px;
+            position: absolute;
+            right: 10px;
+            z-index: 10;
+        }
+
+        /* Título com imagem de fundo */
+        .title-container {
+            text-align: center;
+            margin-bottom: 20px;
+            margin-top: 0;
+            background-image: url('https://static.wixstatic.com/media/c96204_0eab7cd4c23a4f33b7b62f330697ff7d~mv2.png');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            height: 300px;
+            position: relative;
+            width: 100%;
+            padding: 20px 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .title-container h2 {
+            font-family: 'Oswald', sans-serif;
+            font-weight: 300;
+            font-size: 38px;
+            color: #FFFFFF;
+            margin-bottom: 30px;
+            position: relative;
+            letter-spacing: 5px;
+            z-index: 1;
+            padding: 10px;
+            display: inline-block;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+        }
+
+        /* Logo abaixo do título */
+        .title-container .logo-below {
+            margin-top: 10px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .title-container .logo-below img {
+            max-width: 100%;
+            height: auto;
+            width: 350px;
+            max-height: 77px;
+        }
+
+        /* Título das Iniciativas */
+        .initiatives-title {
+            text-align: center;
+            margin-top: 20px;
+            width: 100%;
+        }
+
+        .initiatives-title h1 {
+            font-family: 'Oswald', sans-serif;
+            font-weight: 400;
+            font-size: 28px;
+            letter-spacing: 5px;
+            color: var(--text-color);
+            margin: 0;
+        }
+
+        .initiatives-title hr {
+            width: 100px;
+            height: 3px;
+            background-color: var(--accent-color);
+            border: none;
+            margin: 8px auto 0;
+        }
+
+        /* Grid Container */
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 30px;
+            margin: 20px auto;
+            width: 90%;
+            max-width: 1200px;
+        }
+
+        /* Flip Card */
+        .flip-card {
+            width: 100%;
+            height: 200px;
+            opacity: 0;
+            transform: translateY(50px);
+            position: relative;
+            overflow: hidden;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px var(--shadow-color);
+            box-sizing: border-box;
+            transition: opacity 1.5s ease-in-out, transform 1.5s ease-in-out;
+        }
+
+        .flip-card.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Frente do cartão */
+        .flip-card-front {
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            top: 0;
+            left: 0;
+            background-size: cover;
+            background-position: center;
+            transition: transform 0.5s ease-in-out;
+            box-sizing: border-box;
+            cursor: pointer;
+        }
+
+        /* Verso do cartão */
+        .flip-card-back {
+            width: 100%;
+            height: 100%;
+            background-color: var(--card-bg);
+            color: var(--card-text);
+            position: absolute;
+            top: 0;
+            left: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            text-align: center;
+            font-family: 'Roboto', sans-serif;
+            padding: 10px;
+            transform: translateY(100%);
+            transition: transform 0.5s ease-in-out;
+            box-sizing: border-box;
+        }
+
+        /* Título no verso do cartão */
+        .flip-card-back h2 {
+            font-size: 20px;
+            font-weight: 500;
+            margin-bottom: 5px;
+            padding: 5px 20px;
+            width: 100%;
+            line-height: 1.2;
+            word-wrap: break-word;
+            overflow-wrap: break-word;
+            box-sizing: border-box;
+        }
+
+        /* Parágrafo no verso do cartão */
+        .flip-card-back p {
+            font-size: 16px;
+            font-weight: 300;
+            padding: 5px 20px;
+            width: 100%;
+            line-height: 1.3;
+            word-wrap: break-word;
+            overflow-wrap: break-word;
+            box-sizing: border-box;
+        }
+
+        /* Efeito de deslizamento */
+        .flip-card:hover .flip-card-front {
+            transform: translateY(-100%);
+        }
+
+        .flip-card:hover .flip-card-back {
+            transform: translateY(0);
+        }
+
+        /* Otimização para touch */
+        @media (hover: none) {
+            .flip-card.touch-focus .flip-card-front {
+                transform: translateY(-100%);
+            }
+            
+            .flip-card.touch-focus .flip-card-back {
+                transform: translateY(0);
+            }
+        }
+
+        /* Botão de volta ao topo */
+        .back-to-top {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: var(--accent-color);
+            color: var(--text-color);
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s, visibility 0.3s;
+            box-shadow: 0 2px 5px var(--shadow-color);
+            z-index: 999;
+        }
+
+        .back-to-top.visible {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .back-to-top i {
+            font-size: 24px;
+        }
+
+        /* Toggle de tema */
+        .theme-toggle {
+            position: fixed;
+            bottom: 20px;
+            left: 20px;
+            background-color: var(--accent-color);
+            color: var(--text-color);
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            box-shadow: 0 2px 5px var(--shadow-color);
+            z-index: 999;
+        }
+
+        .theme-toggle i {
+            font-size: 24px;
+        }
+
+        /* Rodapé */
+        footer {
+            background-color: var(--footer-bg);
+            color: var(--footer-text);
+            width: 100%;
+            padding: 20px 5%;
+            text-align: center;
+            margin-top: 50px;
+            box-shadow: 0 -2px 5px var(--shadow-color);
+        }
+
+        footer p {
+            font-size: 14px;
+            font-family: 'Roboto', sans-serif;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        footer a {
+            color: var(--accent-color);
+            text-decoration: none;
+            margin: 0 10px;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+
+        /* Ícone do footer */
+        .footer-icon {
+            margin-right: 10px;
+            color: var(--accent-color);
+            font-size: 20px;
+            transition: transform 0.3s ease;
+        }
+
+        .footer-icon:hover {
+            transform: scale(1.2);
+        }
+
+        /* Redes sociais no footer */
+        .social-icons {
+            display: flex;
+            justify-content: center;
+            margin-top: 15px;
+            gap: 20px;
+        }
+
+        .social-icons a {
+            color: var(--accent-color);
+            font-size: 24px;
+            transition: transform 0.3s ease;
+        }
+
+        .social-icons a:hover {
+            transform: scale(1.2);
+        }
+
+        /* Banner de cookies */
+        .cookie-consent {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background-color: var(--cookie-bg);
+            color: var(--cookie-text);
+            padding: 15px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 -2px 10px var(--shadow-color);
+            z-index: 9999;
+            transform: translateY(100%);
+            transition: transform 0.5s ease;
+        }
+
+        .cookie-consent.visible {
+            transform: translateY(0);
+        }
+
+        .cookie-consent p {
+            margin-right: 20px;
+            font-size: 14px;
+        }
+
+        .cookie-consent button {
+            background-color: var(--accent-color);
+            color: var(--text-color);
+            border: none;
+            padding: 8px 16px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        /* Responsividade para tablets */
+        @media (max-width: 768px) {
+            .grid-container {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .nav-menu {
+                display: none;
+                position: fixed;
+                top: 60px;
+                left: -100%;
+                width: 70%;
+                height: 100vh;
+                background-color: var(--header-bg);
+                flex-direction: column;
+                padding: 20px 0;
+                z-index: 999;
+                transition: left 0.3s ease;
+                box-shadow: 2px 0 5px var(--shadow-color);
+            }
+            
+            .nav-menu.active {
+                left: 0;
+                display: flex;
+            }
+            
+            .menu-toggle {
+                display: block;
+            }
+            
+            .nav-menu li {
+                margin: 15px 0;
+                text-align: center;
+            }
+            
+            .title-container h2 {
+                font-size: 28px;
+            }
+            
+            .flip-card-back h2 {
+                font-size: 18px;
+                font-weight: 500;
+            }
+            
+            .flip-card-back p {
+                font-size: 14px;
+            }
+
+            .search-box.active {
+                width: 150px;
+            }
+        }
+
+        /* Responsividade para smartphones */
+        @media (max-width: 480px) {
+            .grid-container {
+                grid-template-columns: 1fr;
+            }
+            
+            .title-container {
+                height: 250px;
+            }
+            
+            .title-container h2 {
+                font-size: 24px;
+            }
+            
+            .title-container .logo-below img {
+                width: 200px;
+            }
+            
+            .flip-card-back h2 {
+                font-size: 24px;
+                font-weight: 500;
+                margin-bottom: 8px;
+            }
+            
+            .flip-card-back p {
+                font-size: 14px;
+                font-weight: 300;
+                line-height: 1.4;
+            }
+
+            .cookie-consent {
+                flex-direction: column;
+                text-align: center;
+                padding: 10px;
+            }
+
+            .cookie-consent p {
+                margin-right: 0;
+                margin-bottom: 10px;
+            }
+
+            .theme-toggle, .back-to-top {
+                width: 40px;
+                height: 40px;
+            }
+
+            .theme-toggle i, .back-to-top i {
+                font-size: 20px;
+            }
+        }
+
+        /* Seções gerais */
+        section {
+            width: 100%;
+            min-height: 200px;
+            padding: 0;
+        }
+
+        /* Seção de iniciativas */
+        #iniciativas {
+            padding: 40px 5%;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header fixo no topo -->
+    <header>
+        <div class="logo">
+            <img src="https://static.wixstatic.com/media/c96204_a91c5c5f89ef478291cf0c176a59efab~mv2.png" alt="SeringalLab Logo">
+        </div>
+        <button class="menu-toggle" aria-label="Menu">☰</button>
+        <ul class="nav-menu">
+            <li><a href="#inicio">Início</a></li>
+            <li><a href="#sobre">Sobre</a></li>
+            <li><a href="#iniciativas">Iniciativas</a></li>
+            <li><a href="#contato">Contato</a></li>
+        </ul>
+        <div class="search-container">
+            <input type="text" class="search-box" placeholder="Pesquisar iniciativas...">
+            <button class="search-btn"><i class="fas fa-search"></i></button>
+        </div>
+    </header>
+
+    <!-- Seção Início -->
+    <section id="inicio" data-aos="fade-up">
+        <!-- Título com imagem de fundo -->
+        <div class="title-container">
+            <h2>Geração de Soluções Inovadoras<br>para melhorar as atividades meio e fim.</h2>
+            <div class="logo-below">
+                <img src="https://static.wixstatic.com/media/c96204_42daeb44010842659bf6e7e53695e3ff~mv2.png" alt="SeringalLab Logo Below">
+            </div>
+        </div>
+    </section>
+
+    <!-- Seção Iniciativas -->
+    <section id="iniciativas">
+        <!-- Título "Iniciativas" fora do container de fundo -->
+        <div class="initiatives-title" data-aos="fade-up">
+            <h1>Iniciativas</h1>
+            <hr>
+        </div>
+
+        <div class="grid-container">
+            <!-- 12 cartões (3 linhas x 4 colunas) -->
+            <div class="flip-card" data-aos="fade-up" data-aos-delay="100">
+                <div class="flip-card-front" style="background-image: url('https://static.wixstatic.com/media/c96204_824df33c9cb14d15ab95e59a32554ea6~mv2.png');" aria-label="Anton.IA"></div>
+                <div class="flip-card-back">
+                    <h2>Anton.IA</h2>
+                    <p>Descrição breve da iniciativa.</p>
+                </div>
+            </div>
+
+            <div class="flip-card" data-aos="fade-up" data-aos-delay="200">
+                <div class="flip-card-front" style="background-image: url('https://static.wixstatic.com/media/c96204_cbf4cb93cfa8412f9b2be30cf886d13c~mv2.png');" aria-label="Simplifica"></div>
+                <div class="flip-card-back">
+                    <h2>Simplifica</h2>
+                    <p>Descrição breve da iniciativa.</p>
+                </div>
+            </div>
+
+            <div class="flip-card" data-aos="fade-up" data-aos-delay="300">
+                <div class="flip-card-front" style="background-image: url('https://static.wixstatic.com/media/c96204_cf4730be8cad40208c591f9f72c376aa~mv2.png');" aria-label="Bora!"></div>
+                <div class="flip-card-back">
+                    <h2>Bora!</h2>
+                    <p>Descrição breve da iniciativa.</p>
+                </div>
+            </div>
+
+            <div class="flip-card" data-aos="fade-up" data-aos-delay="400">
+                <div class="flip-card-front" style="background-image: url('https://static.wixstatic.com/media/c96204_61060df0d0554ad0b50d4020fb8af738~mv2.png');" aria-label="Empodera"></div>
+                <div class="flip-card-back">
+                    <h2>Empodera</h2>
+                    <p>Descrição breve da iniciativa.</p>
+                </div>
+            </div>
+
+            <div class="flip-card" data-aos="fade-up" data-aos-delay="100">
+                <div class="flip-card-front" style="background-image: url('https://static.wixstatic.com/media/c96204_34faa3aeda824fa791161a6ac7e821ff~mv2.png');" aria-label="Seringalpedia"></div>
+                <div class="flip-card-back">
+                    <h2>Seringalpedia</h2>
+                    <p>Descrição breve da iniciativa.</p>
+                </div>
+            </div>
+
+            <div class="flip-card" data-aos="fade-up" data-aos-delay="200">
+                <div class="flip-card-front" style="background-image: url('https://static.wixstatic.com/media/c96204_bd12ebcb1cba4a04b6953b6171dc696d~mv2.png');" aria-label="TranscreveAI"></div>
+                <div class="flip-card-back">
+                    <h2>TranscreveAI</h2>
+                    <p>Descrição breve da iniciativa.</p>
+                </div>
+            </div>
+
+            <div class="flip-card" data-aos="fade-up" data-aos-delay="300">
+                <div class="flip-card-front" style="background-image: url('https://static.wixstatic.com/media/c96204_8e191567477c4617b08deecd4543d077~mv2.png');" aria-label="Robotiza"></div>
+                <div class="flip-card-back">
+                    <h2>Robotiza</h2>
+                    <p>Descrição breve da iniciativa.</p>
+                </div>
+            </div>
+
+            <div class="flip-card" data-aos="fade-up" data-aos-delay="400">
+                <div class="flip-card-front" style="background-image: url('https://static.wixstatic.com/media/c96204_12cfc96f1dc843849297df229c567df8~mv2.png');" aria-label="Seringal Link"></div>
+                <div class="flip-card-back">
+                    <h2>Seringal Link</h2>
+                    <p>Descrição breve da iniciativa.</p>
+                </div>
+            </div>
+
+            <div class="flip-card" data-aos="fade-up" data-aos-delay="100">
+                <div class="flip-card-front" style="background-image: url('https://static.wixstatic.com/media/c96204_e5900020e9e245c1b56a112072c14b12~mv2.png');" aria-label="Lab Itinerante"></div>
+                <div class="flip-card-back">
+                    <h2>Lab Itinerante</h2>
+                    <p>Descrição breve da iniciativa.</p>
+                </div>
+            </div>
+
+            <div class="flip-card" data-aos="fade-up" data-aos-delay="200">
+                <div class="flip-card-front" style="background-image: url('https://static.wixstatic.com/media/c96204_15d2e09752744e45bd0603ce91275b6f~mv2.png');" aria-label="MPAC Lab"></div>
+                <div class="flip-card-back">
+                    <h2>MPAC Lab</h2>
+                    <p>Descrição breve da iniciativa.</p>
+                </div>
+            </div>
+
+            <div class="flip-card" data-aos="fade-up" data-aos-delay="300">
+                <div class="flip-card-front" style="background-image: url('https://static.wixstatic.com/media/c96204_713888d289144562be7dfe18793c1e14~mv2.png');" aria-label="Retiro Lab"></div>
+                <div class="flip-card-back">
+                    <h2>Retiro Lab</h2>
+                    <p>Descrição breve da iniciativa.</p>
+                </div>
+            </div>
+
+            <div class="flip-card" data-aos="fade-up" data-aos-delay="400">
+                <div class="flip-card-front" style="background-image: url('https://static.wixstatic.com/media/c96204_ac6a9d238a614d0399a9b129ac0c9a1f~mv2.png');" aria-label="Catalisa"></div>
+                <div class="flip-card-back">
+                    <h2>Catalisa</h2>
+                    <p>Descrição breve da iniciativa.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Seções vazias para os outros links -->
+    <section id="sobre"></section>
+    <section id="contato"></section>
+
+    <!-- Botão Voltar ao Topo -->
+    <div class="back-to-top" aria-label="Voltar ao topo">
+        <i class="fas fa-chevron-up"></i>
+    </div>
+
+    <!-- Botão para alternar o tema -->
+    <div class="theme-toggle" aria-label="Alternar tema">
+        <i class="fas fa-moon"></i>
+    </div>
+
+    <!-- Banner de consentimento de cookies -->
+    <div class="cookie-consent">
+        <p>Este site utiliza cookies para melhorar sua experiência. Ao continuar navegando, você concorda com a nossa <a href="#privacidade">Política de Privacidade</a>.</p>
+        <button id="accept-cookies">Aceitar</button>
+    </div>
+
+    <!-- Rodapé -->
+    <footer>
+        <p>
+            <a href="https://seringallab.com" target="_blank" class="footer-icon">
+                <i class="fas fa-seedling"></i>
+            </a>
+            © 2025 Seringal Lab. Todos os direitos reservados. | <a href="#contato">Contato</a> | <a href="#privacidade">Política de Privacidade</a>
+        </p>
+        <div class="social-icons">
+            <a href="https://facebook.com" target="_blank" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
+            <a href="https://instagram.com" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+            <a href="https://twitter.com" target="_blank" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+            <a href="https://linkedin.com" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+            <a href="https://github.com" target="_blank" aria-label="GitHub"><i class="fab fa-github"></i></a>
+        </div>
+    </footer>
+
+    <!-- AOS (Animate On Scroll) JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Inicializar AOS (Animate On Scroll)
+            AOS.init({
+                duration: 800,
+                once: false
+            });
+
+            // Menu Responsivo melhorado
+            const menuToggle = document.querySelector('.menu-toggle');
+            const navMenu = document.querySelector('.nav-menu');
+            const overlay = document.createElement('div');
+            overlay.classList.add('menu-overlay');
+            document.body.appendChild(overlay);
+
+            // Evento de clique para o botão do menu
+            menuToggle.addEventListener('click', () => {
+                navMenu.classList.toggle('active');
+                document.body.classList.toggle('menu-open');
+                overlay.classList.toggle('active');
+            });
+
+            // Fechar menu ao clicar no overlay
+            overlay.addEventListener('click', () => {
+                navMenu.classList.remove('active');
+                document.body.classList.remove('menu-open');
+                overlay.classList.remove('active');
+            });
+
+            // Smooth Scroll com verificação de existência
+            const navLinks = document.querySelectorAll('.nav-menu a');
+            navLinks.forEach(link => {
+                link.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    const targetId = link.getAttribute('href').substring(1);
+                    const targetElement = document.getElementById(targetId);
+                    
+                    if (targetElement) {
+                        targetElement.scrollIntoView({ behavior: 'smooth' });
+                        // Fechar o menu após clicar (em dispositivos móveis)
+                        navMenu.classList.remove('active');
+                        document.body.classList.remove('menu-open');
+                        overlay.classList.remove('active');
+                    }
+                });
+            });
+
+            // Caixa de pesquisa
+            const searchBtn = document.querySelector('.search-btn');
+            const searchBox = document.querySelector('.search-box');
+            
+            searchBtn.addEventListener('click', () => {
+                searchBox.classList.toggle('active');
+                if (searchBox.classList.contains('active')) {
+                    searchBox.focus();
+                }
+            });
+
+            // Função de pesquisa
+            searchBox.addEventListener('keyup', (e) => {
+                const searchTerm = e.target.value.toLowerCase();
+                const cards = document.querySelectorAll('.flip-card');
+                
+                cards.forEach(card => {
+                    const title = card.querySelector('h2').textContent.toLowerCase();
+                    const description = card.querySelector('p').textContent.toLowerCase();
+                    
+                    if (title.includes(searchTerm) || description.includes(searchTerm)) {
+                        card.style.display = 'block';
+                    } else {
+                        card.style.display = 'none';
+                    }
+                });
+            });
+
+            // Lazy loading para imagens
+            const cardFronts = document.querySelectorAll('.flip-card-front');
+            
+            if ('IntersectionObserver' in window) {
+                const imageObserver = new IntersectionObserver((entries, observer) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            const img = entry.target;
+                            const bgImage = img.style.backgroundImage;
+                            
+                            if (bgImage.includes('data:image')) {
+                                const dataSrc = img.getAttribute('data-bg');
+                                img.style.backgroundImage = `url(${dataSrc})`;
+                            }
+                            
+                            observer.unobserve(img);
+                        }
+                    });
+                });
+                
+                cardFronts.forEach(front => {
+                    // Salvar URL original e substituir com placeholder
+                    const originalBg = front.style.backgroundImage;
+                    front.setAttribute('data-bg', originalBg.replace(/url\(['"]?(.*?)['"]?\)/i, '$1'));
+                    front.style.backgroundImage = 'url("data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 400 300\'%3E%3Crect width=\'400\' height=\'300\' fill=\'%23cccccc\'/%3E%3C/svg%3E")';
+                    
+                    imageObserver.observe(front);
+                });
+            }
+
+            // Animação dos Flip Cards (mantido como fallback)
+            const flipCards = document.querySelectorAll('.flip-card');
+            
+            setTimeout(() => {
+                flipCards.forEach(card => {
+                    card.classList.add('visible');
+                });
+            }, 300);
+
+            // Experiência Touch para dispositivos móveis
+            if ('ontouchstart' in window) {
+                flipCards.forEach(card => {
+                    card.addEventListener('touchstart', function() {
+                        // Remover a classe de outros cards
+                        flipCards.forEach(c => {
+                            if (c !== card) c.classList.remove('touch-focus');
+                        });
+                        
+                        // Toggle a classe no card atual
+                        this.classList.toggle('touch-focus');
+                    });
+                });
+            }
+
+            // Botão Voltar ao Topo
+            const backToTopBtn = document.querySelector('.back-to-top');
+            
+            window.addEventListener('scroll', () => {
+                if (window.pageYOffset > 300) {
+                    backToTopBtn.classList.add('visible');
+                } else {
+                    backToTopBtn.classList.remove('visible');
+                }
+            });
+            
+            backToTopBtn.addEventListener('click', () => {
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            });
+
+            // Toggle de Tema (Modo Escuro/Claro)
+            const themeToggle = document.querySelector('.theme-toggle');
+            const htmlElement = document.documentElement;
+            const themeIcon = themeToggle.querySelector('i');
+            
+            // Verificar tema salvo
+            const savedTheme = localStorage.getItem('theme');
+            if (savedTheme) {
+                htmlElement.setAttribute('data-theme', savedTheme);
+                updateThemeIcon(savedTheme);
+            }
+            
+            themeToggle.addEventListener('click', () => {
+                const currentTheme = htmlElement.getAttribute('data-theme');
+                const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+                
+                htmlElement.setAttribute('data-theme', newTheme);
+                localStorage.setItem('theme', newTheme);
+                
+                updateThemeIcon(newTheme);
+            });
+            
+            function updateThemeIcon(theme) {
+                if (theme === 'dark') {
+                    themeIcon.classList.remove('fa-moon');
+                    themeIcon.classList.add('fa-sun');
+                } else {
+                    themeIcon.classList.remove('fa-sun');
+                    themeIcon.classList.add('fa-moon');
+                }
+            }
+
+            // Banner de Consentimento de Cookies
+            const cookieConsent = document.querySelector('.cookie-consent');
+            const acceptCookiesBtn = document.getElementById('accept-cookies');
+            
+            // Verificar se o usuário já aceitou os cookies
+            const cookiesAccepted = localStorage.getItem('cookiesAccepted');
+            
+            if (!cookiesAccepted) {
+                setTimeout(() => {
+                    cookieConsent.classList.add('visible');
+                }, 1000);
+            }
+            
+            acceptCookiesBtn.addEventListener('click', () => {
+                localStorage.setItem('cookiesAccepted', 'true');
+                cookieConsent.classList.remove('visible');
+            });
+        });
+    </script>
