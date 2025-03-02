@@ -149,10 +149,12 @@
             display: flex;
             align-items: center;
             margin-left: 20px;
+            z-index: 11; /* Garantir que fique acima de outros elementos */
         }
 
         .search-box {
             padding: 8px 12px;
+            padding-right: 35px; /* Espaço para o ícone */
             border-radius: 20px;
             border: none;
             background-color: var(--input-bg);
@@ -175,7 +177,8 @@
             font-size: 16px;
             position: absolute;
             right: 10px;
-            z-index: 10;
+            z-index: 12; /* Aumentado para garantir que fique acima do input */
+            transition: color 0.3s ease;
         }
 
         /* Título com imagem de fundo */
@@ -506,6 +509,252 @@
             font-weight: bold;
         }
 
+        /* Menu overlay */
+        .menu-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 998;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s, visibility 0.3s;
+        }
+
+        .menu-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        body.menu-open {
+            overflow: hidden;
+        }
+
+        /* Seção Destaque */
+        #destaque {
+            padding: 40px 5%;
+            margin-top: 30px;
+        }
+
+        /* Grid para a seção de destaque */
+        .destaque-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            margin: 30px auto;
+            width: 90%;
+            max-width: 1200px;
+            align-items: center; /* Alinha verticalmente os itens */
+        }
+
+        /* Estilo para o texto */
+        .destaque-texto {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding-right: 20px; /* Espaço adicional à direita do texto */
+        }
+
+        .destaque-texto h2 {
+            font-family: 'Oswald', sans-serif;
+            font-weight: 400;
+            font-size: 28px;
+            margin-bottom: 20px;
+            color: var(--text-color);
+        }
+
+        .destaque-texto p {
+            font-family: 'Roboto', sans-serif;
+            font-size: 16px;
+            line-height: 1.6;
+            margin-bottom: 15px;
+            color: var(--text-color);
+        }
+
+        /* Botão de "Saiba mais" */
+        .destaque-btn {
+            display: inline-block;
+            background-color: var(--card-bg);
+            color: var(--card-text);
+            padding: 12px 24px; /* Botão um pouco maior */
+            text-decoration: none;
+            border-radius: 5px;
+            margin-top: 20px;
+            font-family: 'Roboto', sans-serif;
+            font-weight: 500;
+            transition: transform 0.3s ease, background-color 0.3s ease;
+            max-width: 160px;
+            text-align: center;
+            box-shadow: 0 2px 4px var(--shadow-color); /* Sombra sutil */
+        }
+
+        .destaque-btn:hover {
+            transform: translateY(-5px);
+            background-color: var(--accent-color);
+        }
+
+        /* Estilo para a imagem */
+        .destaque-imagem {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px var(--shadow-color);
+            height: 400px;
+            position: relative;
+            background-color: var(--bg-color); /* Fundo que combina com o tema */
+        }
+
+        .destaque-imagem img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover; /* Preenche todo o espaço */
+            transition: transform 0.5s ease;
+        }
+
+        .destaque-imagem:hover img {
+            transform: scale(1.05);
+        }
+
+        /* Seção Contato */
+        #contato {
+            padding: 40px 5%;
+            margin-top: 30px;
+        }
+
+        /* Container do formulário */
+        .contato-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            margin: 30px auto;
+            width: 90%;
+            max-width: 1200px;
+            align-items: start;
+        }
+
+        /* Estilo para a coluna de informações */
+        .contato-info {
+            padding: 20px;
+            background-color: var(--bg-color);
+            border-radius: 10px;
+            box-shadow: 0 4px 8px var(--shadow-color);
+        }
+
+        .contato-info h2 {
+            font-family: 'Oswald', sans-serif;
+            font-weight: 400;
+            font-size: 28px;
+            margin-bottom: 20px;
+            color: var(--text-color);
+        }
+
+        .contato-info p {
+            font-family: 'Roboto', sans-serif;
+            font-size: 16px;
+            line-height: 1.6;
+            margin-bottom: 30px;
+            color: var(--text-color);
+        }
+
+        /* Detalhes de contato */
+        .contato-detalhes {
+            margin-top: 30px;
+        }
+
+        .contato-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+
+        .contato-item i {
+            color: var(--card-bg);
+            font-size: 18px;
+            width: 30px;
+        }
+
+        .contato-item span {
+            font-family: 'Roboto', sans-serif;
+            color: var(--text-color);
+        }
+
+        /* Estilo para o formulário */
+        .contato-form {
+            padding: 30px;
+            background-color: var(--bg-color);
+            border-radius: 10px;
+            box-shadow: 0 4px 8px var(--shadow-color);
+        }
+
+        /* Layout de duas colunas para nome e email */
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            font-family: 'Roboto', sans-serif;
+            font-weight: 500;
+            margin-bottom: 8px;
+            color: var(--text-color);
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-family: 'Roboto', sans-serif;
+            font-size: 15px;
+            background-color: var(--input-bg);
+            color: var(--input-text);
+            transition: border-color 0.3s, box-shadow 0.3s;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--accent-color);
+            box-shadow: 0 0 0 2px rgba(167, 234, 38, 0.2);
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        /* Botão de envio */
+        .contato-btn {
+            display: inline-block;
+            background-color: var(--card-bg);
+            color: var(--card-text);
+            padding: 12px 30px;
+            border: none;
+            border-radius: 5px;
+            font-family: 'Roboto', sans-serif;
+            font-size: 16px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: transform 0.3s ease, background-color 0.3s ease;
+            box-shadow: 0 2px 4px var(--shadow-color);
+        }
+
+        .contato-btn:hover {
+            transform: translateY(-5px);
+            background-color: var(--accent-color);
+        }
+
         /* Responsividade para tablets */
         @media (max-width: 768px) {
             .grid-container {
@@ -554,8 +803,43 @@
                 font-size: 14px;
             }
 
+            .search-container {
+                margin-left: 10px;
+            }
+            
             .search-box.active {
                 width: 150px;
+            }
+            
+            /* Responsividade para a seção de destaque */
+            .destaque-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+            
+            .destaque-imagem {
+                height: 350px; /* Altura menor em dispositivos móveis */
+                order: -1; /* Imagem em cima do texto */
+            }
+            
+            .destaque-texto {
+                padding-right: 0; /* Remove padding em dispositivos móveis */
+                text-align: center; /* Centraliza texto em dispositivos móveis */
+            }
+            
+            .destaque-btn {
+                margin: 20px auto 0; /* Centraliza o botão */
+            }
+            
+            /* Responsividade para a seção de contato */
+            .contato-container {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+            
+            .form-row {
+                grid-template-columns: 1fr;
+                gap: 0;
             }
         }
 
@@ -608,6 +892,26 @@
             .theme-toggle i, .back-to-top i {
                 font-size: 20px;
             }
+            
+            .search-container {
+                position: static;
+                margin-left: 5px;
+            }
+            
+            .search-box {
+                position: absolute;
+                right: 50px;
+                top: 10px;
+            }
+            
+            .search-box.active {
+                width: 120px;
+            }
+            
+            /* Ajustes adicionais para smartphones */
+            .destaque-imagem {
+                height: 250px; /* Altura ainda menor */
+            }
         }
 
         /* Seções gerais */
@@ -634,6 +938,7 @@
             <li><a href="#inicio">Início</a></li>
             <li><a href="#sobre">Sobre</a></li>
             <li><a href="#iniciativas">Iniciativas</a></li>
+            <li><a href="#destaque">Destaque</a></li>
             <li><a href="#contato">Contato</a></li>
         </ul>
         <div class="search-container">
@@ -761,9 +1066,90 @@
         </div>
     </section>
 
-    <!-- Seções vazias para os outros links -->
+    <!-- Seção Destaque -->
+    <section id="destaque" data-aos="fade-up">
+        <!-- Título "Destaque" no mesmo estilo de "Iniciativas" -->
+        <div class="initiatives-title" data-aos="fade-up">
+            <h1>Destaque</h1>
+            <hr>
+        </div>
+
+        <!-- Grid de 1 linha e 2 colunas -->
+        <div class="destaque-grid">
+            <!-- Coluna de texto -->
+            <div class="destaque-texto" data-aos="fade-right">
+                <h2>Somos o SeringalLab. O setor de inovação do MPAC</h2>
+                <p>O SeringalLab é o Laboratório de Inovação do Ministério Público do Estado do Acre. É um espaço dedicado ao desenvolvimento, experimentação e implementação de novas ideias, métodos, processos e iniciativas.</p>
+                <p>Com base em pilares como inovação organizacional e de processos, desenvolvimento de competências e aplicação de novas tecnologias, o SeringalLab visa atuar como um catalisador da transformação interna do Ministério Público do Acre, promovendo melhorias contínuas que otimizam o funcionamento da instituição e geram um impacto positivo direto para a sociedade.</p>
+                <a href="#" class="destaque-btn">Saiba mais</a>
+            </div>
+            
+            <!-- Coluna de imagem -->
+            <div class="destaque-imagem" data-aos="fade-left">
+                <img src="https://static.wixstatic.com/media/c96204_ab52ba88809f4f6381bb648d233afc40~mv2.png" alt="Imagem de Destaque">
+            </div>
+        </div>
+    </section>
+
+    <!-- Seção Formulário Fale Conosco -->
+    <section id="contato" data-aos="fade-up">
+        <!-- Título "Fale Conosco" no mesmo estilo de "Iniciativas" -->
+        <div class="initiatives-title" data-aos="fade-up">
+            <h1>Fale Conosco</h1>
+            <hr>
+        </div>
+
+        <!-- Container do formulário -->
+        <div class="contato-container">
+            <div class="contato-info" data-aos="fade-right">
+                <h2>Entre em contato</h2>
+                <p>Tem alguma dúvida, sugestão ou quer saber mais sobre nossas iniciativas? Preencha o formulário e nossa equipe entrará em contato com você o mais breve possível.</p>
+                
+                <div class="contato-detalhes">
+                    <div class="contato-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <span>Ministério Público do Acre, Rio Branco - AC</span>
+                    </div>
+                    <div class="contato-item">
+                        <i class="fas fa-envelope"></i>
+                        <span>seringallab@mpac.mp.br</span>
+                    </div>
+                    <div class="contato-item">
+                        <i class="fas fa-phone-alt"></i>
+                        <span>(68) 3212-1000</span>
+                    </div>
+                </div>
+            </div>
+
+            <form class="contato-form" data-aos="fade-left">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="nome">Nome</label>
+                        <input type="text" id="nome" name="nome" placeholder="Seu nome completo" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">E-mail</label>
+                        <input type="email" id="email" name="email" placeholder="Seu e-mail" required>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="assunto">Assunto</label>
+                    <input type="text" id="assunto" name="assunto" placeholder="Assunto da mensagem" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="mensagem">Mensagem</label>
+                    <textarea id="mensagem" name="mensagem" rows="5" placeholder="Digite sua mensagem aqui..." required></textarea>
+                </div>
+                
+                <button type="submit" class="contato-btn">Enviar mensagem</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Seção vazia para "sobre" -->
     <section id="sobre"></section>
-    <section id="contato"></section>
 
     <!-- Botão Voltar ao Topo -->
     <div class="back-to-top" aria-label="Voltar ao topo">
@@ -849,11 +1235,49 @@
             // Caixa de pesquisa
             const searchBtn = document.querySelector('.search-btn');
             const searchBox = document.querySelector('.search-box');
+            const searchContainer = document.querySelector('.search-container');
             
-            searchBtn.addEventListener('click', () => {
+            searchBtn.addEventListener('click', (e) => {
+                e.preventDefault();
                 searchBox.classList.toggle('active');
+                
                 if (searchBox.classList.contains('active')) {
-                    searchBox.focus();
+                    // Foca no campo de pesquisa
+                    setTimeout(() => {
+                        searchBox.focus();
+                    }, 100); // Pequeno delay para garantir transição completa
+                    
+                    // Ajusta a cor do ícone diretamente
+                    searchBtn.style.color = '#012e2c';
+                    
+                    // Fecha automaticamente em dispositivos móveis ao clicar fora
+                    if (window.innerWidth <= 480) {
+                        document.addEventListener('click', closeSearchOnClickOutside);
+                    }
+                } else {
+                    // Volta à cor original quando o campo não estiver ativo
+                    searchBtn.style.color = '';
+                    
+                    // Remove o evento quando fechado
+                    document.removeEventListener('click', closeSearchOnClickOutside);
+                }
+            });
+
+            // Função para fechar a pesquisa ao clicar fora dela em dispositivos móveis
+            function closeSearchOnClickOutside(event) {
+                if (!searchContainer.contains(event.target)) {
+                    searchBox.classList.remove('active');
+                    searchBtn.style.color = '';
+                    document.removeEventListener('click', closeSearchOnClickOutside);
+                }
+            }
+
+            // Ajustar busca quando a janela for redimensionada
+            window.addEventListener('resize', () => {
+                if (window.innerWidth > 480 && searchBox.classList.contains('active')) {
+                    document.removeEventListener('click', closeSearchOnClickOutside);
+                } else if (window.innerWidth <= 480 && searchBox.classList.contains('active')) {
+                    document.addEventListener('click', closeSearchOnClickOutside);
                 }
             });
 
@@ -994,3 +1418,5 @@
             });
         });
     </script>
+</body>
+</html>
