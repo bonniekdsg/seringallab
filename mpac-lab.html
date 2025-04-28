@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="pt" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MPAC Lab - Seringal Lab</title>
+    <!-- Font Awesome para ícones -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- AOS (Animate On Scroll) CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" />
+    <!-- Link para o arquivo CSS externo -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Header (igual ao index.html) -->
+    <header>
+        <div class="logo">
+            <a href="index.html">
+                <img src="https://static.wixstatic.com/media/c96204_a91c5c5f89ef478291cf0c176a59efab~mv2.png" alt="SeringalLab Logo">
+            </a>
+        </div>
+        <button class="menu-toggle" aria-label="Menu">☰</button>
+        <ul class="nav-menu">
+            <li><a href="index.html#inicio">Início</a></li>
+            <li><a href="index.html#sobre">Sobre</a></li>
+            <li><a href="index.html#iniciativas">Iniciativas</a></li>
+            <li><a href="index.html#destaque">Destaques</a></li>
+            <li><a href="index.html#blog">Blog</a></li>
+            <li><a href="index.html#contato">Contato</a></li>
+        </ul>
+        <div class="search-container">
+            <input type="text" class="search-box" placeholder="Pesquisar iniciativas...">
+            <button class="search-btn"><i class="fas fa-search"></i></button>
+        </div>
+    </header>
+
+    <main>
+        <!-- Seção Hero da Iniciativa -->
+        <section class="initiative-hero" style="background-image: url('https://static.wixstatic.com/media/c96204_15d2e09752744e45bd0603ce91275b6f~mv2.png');" data-aos="fade-in">
+            <h1>MPAC Lab</h1>
+            <p class="hero-description">Plataforma de treinamento em Python e Inteligência Artificial.</p>
+            <button class="initiative-hero-btn">Acessar Cursos</button>
+        </section>
+
+        <!-- Seção Sobre a Iniciativa -->
+        <section class="about-initiative" data-aos="fade-up">
+            <h2 class="section-title">Sobre o MPAC Lab</h2>
+            <div class="about-grid">
+                <div class="about-item" data-aos="fade-up" data-aos-delay="100">
+                    <div class="icon-circle"><i class="fab fa-python"></i></div>
+                    <p>Plataforma online de capacitação em programação Python e conceitos de Inteligência Artificial.</p>
+                </div>
+                <div class="about-item" data-aos="fade-up" data-aos-delay="200">
+                    <div class="icon-circle"><i class="fas fa-laptop-code"></i></div>
+                    <p>Oferece cursos, tutoriais e desafios práticos para membros e servidores do MPAC.</p>
+                </div>
+                <div class="about-item" data-aos="fade-up" data-aos-delay="300">
+                    <div class="icon-circle"><i class="fas fa-brain"></i></div>
+                    <p>Foco em aplicações práticas de IA e análise de dados para a realidade do Ministério Público.</p>
+                </div>
+                <div class="about-item" data-aos="fade-up" data-aos-delay="400">
+                    <div class="icon-circle"><i class="fas fa-graduation-cap"></i></div>
+                    <p>Estimula o desenvolvimento de habilidades digitais essenciais para a transformação institucional.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Seção Testimonials -->
+        <section class="testimonials" data-aos="fade-up">
+            <h2 class="section-title">Alunos do MPAC Lab</h2>
+            <div class="testimonials-grid">
+                <div class="testimonial-item" data-aos="fade-up" data-aos-delay="100">
+                    <img src="https://static.wixstatic.com/media/c96204_6ccee48e339541f8a58b9dbc0b7a3308~mv2.png" alt="Foto Aluno 1">
+                    <div class="testimonial-text">
+                        <p>"Nunca tinha programado antes. O MPAC Lab me deu a base para começar a automatizar pequenas tarefas."</p>
+                        <cite>- Analista MPAC</cite>
+                    </div>
+                </div>
+                <div class="testimonial-item" data-aos="fade-up" data-aos-delay="200">
+                    <img src="https://static.wixstatic.com/media/c96204_6ccee48e339541f8a58b9dbc0b7a3308~mv2.png" alt="Foto Aluno 2">
+                    <div class="testimonial-text">
+                        <p>"Os conceitos de IA estão me ajudando a entender melhor o potencial dessas tecnologias no nosso trabalho."</p>
+                        <cite>- Membro MPAC</cite>
+                    </div>
+                </div>
+                 <div class="testimonial-item" data-aos="fade-up" data-aos-delay="300">
+                    <img src="https://static.wixstatic.com/media/c96204_6ccee48e339541f8a58b9dbc0b7a3308~mv2.png" alt="Foto Aluno 3">
+                    <div class="testimonial-text">
+                        <p>"A plataforma é muito didática e os exercícios práticos ajudam a fixar o conteúdo."</p>
+                        <cite>- Técnico de TI</cite>
+                    </div>
+                </div>
+                 <div class="testimonial-item" data-aos="fade-up" data-aos-delay="400">
+                    <img src="https://static.wixstatic.com/media/c96204_6ccee48e339541f8a58b9dbc0b7a3308~mv2.png" alt="Foto Aluno 4">
+                    <div class="testimonial-text">
+                        <p>"Estou aplicando o que aprendi em Python para analisar dados de forma mais eficiente. Recomendo!"</p>
+                        <cite>- Servidor MPAC</cite>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Seção Resultados -->
+        <section class="results-section" data-aos="fade-up">
+            <h2 class="section-title">Resultados do MPAC Lab</h2>
+            <div class="results-grid">
+                <div class="result-item" data-aos="fade-up" data-aos-delay="100">
+                    <div class="result-circle">5+</div>
+                    <p>Cursos disponíveis (Python e IA)</p>
+                </div>
+                <div class="result-item" data-aos="fade-up" data-aos-delay="200">
+                    <div class="result-circle">150+</div>
+                    <p>Alunos inscritos</p>
+                </div>
+                 <div class="result-item" data-aos="fade-up" data-aos-delay="300">
+                    <div class="result-circle">50+</div>
+                    <p>Projetos práticos desenvolvidos</p>
+                </div>
+                 <div class="result-item" data-aos="fade-up" data-aos-delay="400">
+                    <div class="result-circle">Online</div>
+                    <p>Acesso flexível e aprendizado contínuo</p>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Rodapé (igual ao index.html) -->
+    <footer>
+        <p>
+            <a href="https://seringallab.com" target="_blank" class="footer-icon">
+                <i class="fas fa-seedling"></i>
+            </a>
+            © 2025 Seringal Lab. Todos os direitos reservados. | <a href="index.html#contato">Contato</a> | <a href="#privacidade">Política de Privacidade</a>
+        </p>
+        <div class="social-icons">
+            <a href="https://www.mpac.mp.br/" target="_blank" aria-label="MPAC"><i class="fas fa-balance-scale"></i></a>
+            <a href="https://www.instagram.com/mpacre/" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+            <a href="https://wa.me/seu-numero-aqui" target="_blank" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+        </div>
+    </footer>
+
+    <!-- AOS (Animate On Scroll) JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+    <!-- Link para o arquivo JS externo -->
+    <script src="scripts.js"></script>
+    <script>
+         AOS.init({
+             duration: 800,
+             once: false
+         });
+    </script>
+</body>
+</html> 

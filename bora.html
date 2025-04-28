@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="pt" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bora! - Seringal Lab</title>
+    <!-- Font Awesome para ícones -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- AOS (Animate On Scroll) CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" />
+    <!-- Link para o arquivo CSS externo -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Header (igual ao index.html) -->
+    <header>
+        <div class="logo">
+            <a href="index.html">
+                <img src="https://static.wixstatic.com/media/c96204_a91c5c5f89ef478291cf0c176a59efab~mv2.png" alt="SeringalLab Logo">
+            </a>
+        </div>
+        <button class="menu-toggle" aria-label="Menu">☰</button>
+        <ul class="nav-menu">
+            <li><a href="index.html#inicio">Início</a></li>
+            <li><a href="index.html#sobre">Sobre</a></li>
+            <li><a href="index.html#iniciativas">Iniciativas</a></li>
+            <li><a href="index.html#destaque">Destaques</a></li>
+            <li><a href="index.html#blog">Blog</a></li>
+            <li><a href="index.html#contato">Contato</a></li>
+        </ul>
+        <div class="search-container">
+            <input type="text" class="search-box" placeholder="Pesquisar iniciativas...">
+            <button class="search-btn"><i class="fas fa-search"></i></button>
+        </div>
+    </header>
+
+    <main>
+        <!-- Seção Hero da Iniciativa -->
+        <section class="initiative-hero" style="background-image: url('https://static.wixstatic.com/media/c96204_cf4730be8cad40208c591f9f72c376aa~mv2.png');" data-aos="fade-in">
+            <h1>Bora!</h1>
+            <p class="hero-description">A rede de talentos do MPAC.</p>
+            <!-- Botão pode levar para a plataforma ou mais informações -->
+            <button class="initiative-hero-btn">Conheça a Rede</button>
+        </section>
+
+        <!-- Seção Sobre a Iniciativa -->
+        <section class="about-initiative" data-aos="fade-up">
+            <h2 class="section-title">Sobre o Bora!</h2>
+            <div class="about-grid">
+                <div class="about-item" data-aos="fade-up" data-aos-delay="100">
+                    <div class="icon-circle"><i class="fas fa-network-wired"></i></div>
+                    <p>Conecta membros e servidores com base em suas habilidades, interesses e projetos.</p>
+                </div>
+                <div class="about-item" data-aos="fade-up" data-aos-delay="200">
+                    <div class="icon-circle"><i class="fas fa-lightbulb"></i></div>
+                    <p>Facilita a formação de equipes multidisciplinares para novas iniciativas e solução de desafios.</p>
+                </div>
+                <div class="about-item" data-aos="fade-up" data-aos-delay="300">
+                    <div class="icon-circle"><i class="fas fa-project-diagram"></i></div>
+                    <p>Permite que talentos internos sejam identificados e aproveitados em diferentes áreas da instituição.</p>
+                </div>
+                <div class="about-item" data-aos="fade-up" data-aos-delay="400">
+                    <div class="icon-circle"><i class="fas fa-comments"></i></div>
+                    <p>Promove a colaboração, o compartilhamento de conhecimento e a inovação dentro do MPAC.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Seção Testimonials (Adaptar com depoimentos sobre o Bora!) -->
+        <section class="testimonials" data-aos="fade-up">
+            <h2 class="section-title">Conexões Geradas</h2>
+            <div class="testimonials-grid">
+                <div class="testimonial-item" data-aos="fade-up" data-aos-delay="100">
+                    <img src="https://static.wixstatic.com/media/c96204_6ccee48e339541f8a58b9dbc0b7a3308~mv2.png" alt="Foto Colaborador X">
+                    <div class="testimonial-text">
+                        <p>"Encontrei no Bora! um colega com la expertise exata que precisava para destravar um projeto. Foi fundamental!"</p>
+                        <cite>- Gestor de Projeto</cite>
+                    </div>
+                </div>
+                <div class="testimonial-item" data-aos="fade-up" data-aos-delay="200">
+                    <img src="https://static.wixstatic.com/media/c96204_6ccee48e339541f8a58b9dbc0b7a3308~mv2.png" alt="Foto Colaborador Y">
+                    <div class="testimonial-text">
+                        <p>"Pude compartilhar minhas habilidades em análise de dados e colaborar com uma área diferente da minha. Muito enriquecedor!"</p>
+                        <cite>- Analista MPAC</cite>
+                    </div>
+                </div>
+                <!-- Adicionar mais testimonials se disponíveis -->
+                <div class="testimonial-item" data-aos="fade-up" data-aos-delay="300">
+                    <img src="https://static.wixstatic.com/media/c96204_6ccee48e339541f8a58b9dbc0b7a3308~mv2.png" alt="Foto Colaborador Z">
+                    <div class="testimonial-text">
+                        <p>"Descobri oportunidades de desenvolvimento que nem sabia que existiam dentro do MPAC através do Bora!."</p>
+                        <cite>- Técnico MPAC</cite>
+                    </div>
+                </div>
+                 <div class="testimonial-item" data-aos="fade-up" data-aos-delay="400">
+                    <img src="https://static.wixstatic.com/media/c96204_6ccee48e339541f8a58b9dbc0b7a3308~mv2.png" alt="Foto Colaborador W">
+                    <div class="testimonial-text">
+                        <p>"A plataforma facilitou a busca por mentores e a troca de experiências entre diferentes setores."</p>
+                        <cite>- Estagiário MPAC</cite>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Seção Resultados (Adaptar com métricas do Bora!) -->
+        <section class="results-section" data-aos="fade-up">
+            <h2 class="section-title">Resultados do Bora!</h2>
+            <div class="results-grid">
+                <div class="result-item" data-aos="fade-up" data-aos-delay="100">
+                    <div class="result-circle">150+</div>
+                    <p>Perfis cadastrados</p>
+                </div>
+                <div class="result-item" data-aos="fade-up" data-aos-delay="200">
+                    <div class="result-circle">30+</div>
+                    <p>Conexões realizadas</p>
+                </div>
+                 <div class="result-item" data-aos="fade-up" data-aos-delay="300">
+                    <div class="result-circle">10+</div>
+                    <p>Projetos colaborativos iniciados</p>
+                </div>
+                 <div class="result-item" data-aos="fade-up" data-aos-delay="400">
+                    <div class="result-circle">Top 5</div>
+                    <p>Habilidades mais buscadas identificadas</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Rodapé (igual ao index.html) -->
+    <footer>
+        <!-- Conteúdo do rodapé igual ao index.html -->
+        <p>
+            <a href="https://seringallab.com" target="_blank" class="footer-icon">
+                <i class="fas fa-seedling"></i>
+            </a>
+            © 2025 Seringal Lab. Todos os direitos reservados. | <a href="index.html#contato">Contato</a> | <a href="#privacidade">Política de Privacidade</a>
+        </p>
+        <div class="social-icons">
+            <a href="https://www.mpac.mp.br/" target="_blank" aria-label="MPAC"><i class="fas fa-balance-scale"></i></a>
+            <a href="https://www.instagram.com/mpacre/" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+            <a href="https://wa.me/seu-numero-aqui" target="_blank" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+    <script src="scripts.js"></script>
+    <script>
+         AOS.init({
+             duration: 800,
+             once: false
+         });
+    </script>
+</body>
+</html>

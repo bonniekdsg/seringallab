@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="pt" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Seringal Link - Seringal Lab</title>
+    <!-- Font Awesome para ícones -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- AOS (Animate On Scroll) CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" />
+    <!-- Link para o arquivo CSS externo -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Header (igual ao index.html) -->
+    <header>
+        <div class="logo">
+            <a href="index.html">
+                <img src="https://static.wixstatic.com/media/c96204_a91c5c5f89ef478291cf0c176a59efab~mv2.png" alt="SeringalLab Logo">
+            </a>
+        </div>
+        <button class="menu-toggle" aria-label="Menu">☰</button>
+        <ul class="nav-menu">
+            <li><a href="index.html#inicio">Início</a></li>
+            <li><a href="index.html#sobre">Sobre</a></li>
+            <li><a href="index.html#iniciativas">Iniciativas</a></li>
+            <li><a href="index.html#destaque">Destaques</a></li>
+            <li><a href="index.html#blog">Blog</a></li>
+            <li><a href="index.html#contato">Contato</a></li>
+        </ul>
+        <div class="search-container">
+            <input type="text" class="search-box" placeholder="Pesquisar iniciativas...">
+            <button class="search-btn"><i class="fas fa-search"></i></button>
+        </div>
+    </header>
+
+    <main>
+        <!-- Seção Hero da Iniciativa -->
+        <section class="initiative-hero" style="background-image: url('https://static.wixstatic.com/media/c96204_12cfc96f1dc843849297df229c567df8~mv2.png');" data-aos="fade-in">
+            <h1>Seringal Link</h1>
+            <p class="hero-description">Transforme links longos em atalhos inteligentes.</p>
+            <button class="initiative-hero-btn">Criar Link Curto</button>
+        </section>
+
+        <!-- Seção Sobre a Iniciativa -->
+        <section class="about-initiative" data-aos="fade-up">
+            <h2 class="section-title">Sobre o Seringal Link</h2>
+            <div class="about-grid">
+                <div class="about-item" data-aos="fade-up" data-aos-delay="100">
+                    <div class="icon-circle"><i class="fas fa-link"></i></div>
+                    <p>Encurtador de URLs personalizado e seguro para uso interno e externo do MPAC.</p>
+                </div>
+                <div class="about-item" data-aos="fade-up" data-aos-delay="200">
+                    <div class="icon-circle"><i class="fas fa-share-square"></i></div>
+                    <p>Facilita o compartilhamento de links em documentos, e-mails e redes sociais.</p>
+                </div>
+                <div class="about-item" data-aos="fade-up" data-aos-delay="300">
+                    <div class="icon-circle"><i class="fas fa-chart-bar"></i></div>
+                    <p>Permite o rastreamento de cliques e a análise de acesso aos links compartilhados.</p>
+                </div>
+                <div class="about-item" data-aos="fade-up" data-aos-delay="400">
+                    <div class="icon-circle"><i class="fas fa-tags"></i></div>
+                    <p>Possibilita a personalização dos links curtos com termos relevantes (ex: mpac.mp.br/meulink).</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Seção Testimonials -->
+        <section class="testimonials" data-aos="fade-up">
+            <h2 class="section-title">Quem Simplifica com Seringal Link</h2>
+            <div class="testimonials-grid">
+                <div class="testimonial-item" data-aos="fade-up" data-aos-delay="100">
+                    <img src="https://static.wixstatic.com/media/c96204_6ccee48e339541f8a58b9dbc0b7a3308~mv2.png" alt="Foto Assessor 1">
+                    <div class="testimonial-text">
+                        <p>"Compartilhar links de processos ficou muito mais fácil e profissional com o Seringal Link."</p>
+                        <cite>- Assessor de Comunicação</cite>
+                    </div>
+                </div>
+                <div class="testimonial-item" data-aos="fade-up" data-aos-delay="200">
+                    <img src="https://static.wixstatic.com/media/c96204_6ccee48e339541f8a58b9dbc0b7a3308~mv2.png" alt="Foto Servidor 4">
+                    <div class="testimonial-text">
+                        <p>"Uso para criar links curtos para formulários e documentos importantes. Ajuda muito na organização."</p>
+                        <cite>- Servidor MPAC</cite>
+                    </div>
+                </div>
+                 <div class="testimonial-item" data-aos="fade-up" data-aos-delay="300">
+                    <img src="https://static.wixstatic.com/media/c96204_6ccee48e339541f8a58b9dbc0b7a3308~mv2.png" alt="Foto Membro 3">
+                    <div class="testimonial-text">
+                        <p>"Acompanhar os cliques nos links que compartilho me ajuda a entender o alcance das minhas comunicações."</p>
+                        <cite>- Membro MPAC</cite>
+                    </div>
+                </div>
+                 <div class="testimonial-item" data-aos="fade-up" data-aos-delay="400">
+                    <img src="https://static.wixstatic.com/media/c96204_6ccee48e339541f8a58b9dbc0b7a3308~mv2.png" alt="Foto Técnico 4">
+                    <div class="testimonial-text">
+                        <p>"Criar links personalizados com o nome da campanha facilita a divulgação e memorização."</p>
+                        <cite>- Técnico de TI</cite>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Seção Resultados -->
+        <section class="results-section" data-aos="fade-up">
+            <h2 class="section-title">Resultados do Seringal Link</h2>
+            <div class="results-grid">
+                <div class="result-item" data-aos="fade-up" data-aos-delay="100">
+                    <div class="result-circle">2K+</div>
+                    <p>Links encurtados</p>
+                </div>
+                <div class="result-item" data-aos="fade-up" data-aos-delay="200">
+                    <div class="result-circle">10K+</div>
+                    <p>Cliques rastreados</p>
+                </div>
+                 <div class="result-item" data-aos="fade-up" data-aos-delay="300">
+                    <div class="result-circle">100+</div>
+                    <p>Usuários ativos</p>
+                </div>
+                 <div class="result-item" data-aos="fade-up" data-aos-delay="400">
+                    <div class="result-circle">Fácil</div>
+                    <p>Integração simples e rápida</p>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Rodapé (igual ao index.html) -->
+    <footer>
+        <p>
+            <a href="https://seringallab.com" target="_blank" class="footer-icon">
+                <i class="fas fa-seedling"></i>
+            </a>
+            © 2025 Seringal Lab. Todos os direitos reservados. | <a href="index.html#contato">Contato</a> | <a href="#privacidade">Política de Privacidade</a>
+        </p>
+        <div class="social-icons">
+            <a href="https://www.mpac.mp.br/" target="_blank" aria-label="MPAC"><i class="fas fa-balance-scale"></i></a>
+            <a href="https://www.instagram.com/mpacre/" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+            <a href="https://wa.me/seu-numero-aqui" target="_blank" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+        </div>
+    </footer>
+
+    <!-- AOS (Animate On Scroll) JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+    <!-- Link para o arquivo JS externo -->
+    <script src="scripts.js"></script>
+    <script>
+         AOS.init({
+             duration: 800,
+             once: false
+         });
+    </script>
+</body>
+</html> 

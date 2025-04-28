@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="pt" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Seringalpedia - Seringal Lab</title>
+    <!-- Font Awesome para ícones -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- AOS (Animate On Scroll) CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" />
+    <!-- Link para o arquivo CSS externo -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Header (igual ao index.html) -->
+    <header>
+        <div class="logo">
+            <a href="index.html">
+                <img src="https://static.wixstatic.com/media/c96204_a91c5c5f89ef478291cf0c176a59efab~mv2.png" alt="SeringalLab Logo">
+            </a>
+        </div>
+        <button class="menu-toggle" aria-label="Menu">☰</button>
+        <ul class="nav-menu">
+            <li><a href="index.html#inicio">Início</a></li>
+            <li><a href="index.html#sobre">Sobre</a></li>
+            <li><a href="index.html#iniciativas">Iniciativas</a></li>
+            <li><a href="index.html#destaque">Destaques</a></li>
+            <li><a href="index.html#blog">Blog</a></li>
+            <li><a href="index.html#contato">Contato</a></li>
+        </ul>
+        <div class="search-container">
+            <input type="text" class="search-box" placeholder="Pesquisar iniciativas...">
+            <button class="search-btn"><i class="fas fa-search"></i></button>
+        </div>
+    </header>
+
+    <main>
+        <!-- Seção Hero da Iniciativa -->
+        <section class="initiative-hero" style="background-image: url('https://static.wixstatic.com/media/c96204_34faa3aeda824fa791161a6ac7e821ff~mv2.png');" data-aos="fade-in">
+            <h1>Seringalpedia</h1>
+            <p class="hero-description">A enciclopédia do SeringalLab.</p>
+            <button class="initiative-hero-btn">Explorar a Base</button>
+        </section>
+
+        <!-- Seção Sobre a Iniciativa -->
+        <section class="about-initiative" data-aos="fade-up">
+            <h2 class="section-title">Sobre a Seringalpedia</h2>
+            <div class="about-grid">
+                <div class="about-item" data-aos="fade-up" data-aos-delay="100">
+                    <div class="icon-circle"><i class="fas fa-book"></i></div>
+                    <p>Base de conhecimento colaborativa sobre inovação, tecnologia e projetos do Seringal Lab e MPAC.</p>
+                </div>
+                <div class="about-item" data-aos="fade-up" data-aos-delay="200">
+                    <div class="icon-circle"><i class="fas fa-share-alt"></i></div>
+                    <p>Centraliza informações, tutoriais, boas práticas e lições aprendidas de forma organizada.</p>
+                </div>
+                <div class="about-item" data-aos="fade-up" data-aos-delay="300">
+                    <div class="icon-circle"><i class="fas fa-search"></i></div>
+                    <p>Facilita a consulta rápida e o compartilhamento de conhecimento entre todos os colaboradores.</p>
+                </div>
+                <div class="about-item" data-aos="fade-up" data-aos-delay="400">
+                    <div class="icon-circle"><i class="fas fa-users-cog"></i></div>
+                    <p>Promove a gestão do conhecimento e preserva a memória institucional sobre inovação.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Seção Testimonials -->
+        <section class="testimonials" data-aos="fade-up">
+            <h2 class="section-title">Colaboradores da Seringalpedia</h2>
+            <div class="testimonials-grid">
+                <div class="testimonial-item" data-aos="fade-up" data-aos-delay="100">
+                    <img src="https://static.wixstatic.com/media/c96204_6ccee48e339541f8a58b9dbc0b7a3308~mv2.png" alt="Foto Colaborador 1">
+                    <div class="testimonial-text">
+                        <p>"Encontrei um tutorial na Seringalpedia que resolveu meu problema em minutos. Fantástico!"</p>
+                        <cite>- Técnico MPAC</cite>
+                    </div>
+                </div>
+                <div class="testimonial-item" data-aos="fade-up" data-aos-delay="200">
+                    <img src="https://static.wixstatic.com/media/c96204_6ccee48e339541f8a58b9dbc0b7a3308~mv2.png" alt="Foto Colaborador 2">
+                    <div class="testimonial-text">
+                        <p>"Documentar o aprendizado dos projetos na Seringalpedia evita que outros cometam os mesmos erros."</p>
+                        <cite>- Gestor de Projetos</cite>
+                    </div>
+                </div>
+                 <div class="testimonial-item" data-aos="fade-up" data-aos-delay="300">
+                    <img src="https://static.wixstatic.com/media/c96204_6ccee48e339541f8a58b9dbc0b7a3308~mv2.png" alt="Foto Colaborador 3">
+                    <div class="testimonial-text">
+                        <p>"É ótimo ter um lugar centralizado para buscar informações sobre as iniciativas de inovação."</p>
+                        <cite>- Analista MPAC</cite>
+                    </div>
+                </div>
+                 <div class="testimonial-item" data-aos="fade-up" data-aos-delay="400">
+                    <img src="https://static.wixstatic.com/media/c96204_6ccee48e339541f8a58b9dbc0b7a3308~mv2.png" alt="Foto Colaborador 4">
+                    <div class="testimonial-text">
+                        <p>"Contribuo sempre que posso, adicionando novas informações. É uma forma de compartilhar conhecimento."</p>
+                        <cite>- Membro MPAC</cite>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Seção Resultados -->
+        <section class="results-section" data-aos="fade-up">
+            <h2 class="section-title">Resultados da Seringalpedia</h2>
+            <div class="results-grid">
+                <div class="result-item" data-aos="fade-up" data-aos-delay="100">
+                    <div class="result-circle">200+</div>
+                    <p>Artigos e tutoriais publicados</p>
+                </div>
+                <div class="result-item" data-aos="fade-up" data-aos-delay="200">
+                    <div class="result-circle">1K+</div>
+                    <p>Visualizações mensais</p>
+                </div>
+                 <div class="result-item" data-aos="fade-up" data-aos-delay="300">
+                    <div class="result-circle">50+</div>
+                    <p>Colaboradores ativos</p>
+                </div>
+                 <div class="result-item" data-aos="fade-up" data-aos-delay="400">
+                    <div class="result-circle">Top 10</div>
+                    <p>Temas mais acessados identificados</p>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Rodapé (igual ao index.html) -->
+    <footer>
+        <p>
+            <a href="https://seringallab.com" target="_blank" class="footer-icon">
+                <i class="fas fa-seedling"></i>
+            </a>
+            © 2025 Seringal Lab. Todos os direitos reservados. | <a href="index.html#contato">Contato</a> | <a href="#privacidade">Política de Privacidade</a>
+        </p>
+        <div class="social-icons">
+            <a href="https://www.mpac.mp.br/" target="_blank" aria-label="MPAC"><i class="fas fa-balance-scale"></i></a>
+            <a href="https://www.instagram.com/mpacre/" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+            <a href="https://wa.me/seu-numero-aqui" target="_blank" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+        </div>
+    </footer>
+
+    <!-- AOS (Animate On Scroll) JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+    <!-- Link para o arquivo JS externo -->
+    <script src="scripts.js"></script>
+    <script>
+         AOS.init({
+             duration: 800,
+             once: false
+         });
+    </script>
+</body>
+</html>

@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="pt" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Robotiza - Seringal Lab</title>
+    <!-- Font Awesome para ícones -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- AOS (Animate On Scroll) CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" />
+    <!-- Link para o arquivo CSS externo -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Header (igual ao index.html) -->
+    <header>
+        <div class="logo">
+            <a href="index.html">
+                <img src="https://static.wixstatic.com/media/c96204_a91c5c5f89ef478291cf0c176a59efab~mv2.png" alt="SeringalLab Logo">
+            </a>
+        </div>
+        <button class="menu-toggle" aria-label="Menu">☰</button>
+        <ul class="nav-menu">
+            <li><a href="index.html#inicio">Início</a></li>
+            <li><a href="index.html#sobre">Sobre</a></li>
+            <li><a href="index.html#iniciativas">Iniciativas</a></li>
+            <li><a href="index.html#destaque">Destaques</a></li>
+            <li><a href="index.html#blog">Blog</a></li>
+            <li><a href="index.html#contato">Contato</a></li>
+        </ul>
+        <div class="search-container">
+            <input type="text" class="search-box" placeholder="Pesquisar iniciativas...">
+            <button class="search-btn"><i class="fas fa-search"></i></button>
+        </div>
+    </header>
+
+    <main>
+        <!-- Seção Hero da Iniciativa -->
+        <section class="initiative-hero" style="background-image: url('https://static.wixstatic.com/media/c96204_8e191567477c4617b08deecd4543d077~mv2.png');" data-aos="fade-in">
+            <h1>Robotiza</h1>
+            <p class="hero-description">Menos tarefas repetitivas, mais tempo para o que importa.</p>
+            <button class="initiative-hero-btn">Solicitar Automação</button>
+        </section>
+
+        <!-- Seção Sobre a Iniciativa -->
+        <section class="about-initiative" data-aos="fade-up">
+            <h2 class="section-title">Sobre o Robotiza</h2>
+            <div class="about-grid">
+                <div class="about-item" data-aos="fade-up" data-aos-delay="100">
+                    <div class="icon-circle"><i class="fas fa-robot"></i></div>
+                    <p>Implementa soluções de Automação Robótica de Processos (RPA) para tarefas manuais e repetitivas no MPAC.</p>
+                </div>
+                <div class="about-item" data-aos="fade-up" data-aos-delay="200">
+                    <div class="icon-circle"><i class="fas fa-cogs"></i></div>
+                    <p>Identifica gargalos e oportunidades de automação em fluxos de trabalho existentes.</p>
+                </div>
+                <div class="about-item" data-aos="fade-up" data-aos-delay="300">
+                    <div class="icon-circle"><i class="fas fa-chart-line"></i></div>
+                    <p>Libera tempo de membros e servidores para atividades mais estratégicas e de maior valor agregado.</p>
+                </div>
+                <div class="about-item" data-aos="fade-up" data-aos-delay="400">
+                    <div class="icon-circle"><i class="fas fa-tachometer-alt"></i></div>
+                    <p>Aumenta a eficiência, reduz erros e melhora a padronização dos processos internos.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Seção Testimonials -->
+        <section class="testimonials" data-aos="fade-up">
+            <h2 class="section-title">Processos Robotizados</h2>
+            <div class="testimonials-grid">
+                <div class="testimonial-item" data-aos="fade-up" data-aos-delay="100">
+                    <img src="https://static.wixstatic.com/media/c96204_6ccee48e339541f8a58b9dbc0b7a3308~mv2.png" alt="Foto Servidor 3">
+                    <div class="testimonial-text">
+                        <p>"A extração de dados que levava horas agora é feita em minutos pelo robô. Incrível ganho de tempo!"</p>
+                        <cite>- Servidor MPAC</cite>
+                    </div>
+                </div>
+                <div class="testimonial-item" data-aos="fade-up" data-aos-delay="200">
+                    <img src="https://static.wixstatic.com/media/c96204_6ccee48e339541f8a58b9dbc0b7a3308~mv2.png" alt="Foto Analista 3">
+                    <div class="testimonial-text">
+                        <p>"Conseguimos automatizar a triagem inicial de alguns documentos, liberando a equipe para análise mais aprofundada."</p>
+                        <cite>- Analista MPAC</cite>
+                    </div>
+                </div>
+                 <div class="testimonial-item" data-aos="fade-up" data-aos-delay="300">
+                    <img src="https://static.wixstatic.com/media/c96204_6ccee48e339541f8a58b9dbc0b7a3308~mv2.png" alt="Foto Gestor 2">
+                    <div class="testimonial-text">
+                        <p>"O Robotiza está transformando a forma como operamos, tornando nossos processos mais eficientes e menos suscetíveis a erros."</p>
+                        <cite>- Gestor MPAC</cite>
+                    </div>
+                </div>
+                 <div class="testimonial-item" data-aos="fade-up" data-aos-delay="400">
+                    <img src="https://static.wixstatic.com/media/c96204_6ccee48e339541f8a58b9dbc0b7a3308~mv2.png" alt="Foto Técnico 3">
+                    <div class="testimonial-text">
+                        <p>"Aquela tarefa de copiar e colar dados entre sistemas não existe mais! O robô faz tudo."</p>
+                        <cite>- Técnico Administrativo</cite>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Seção Resultados -->
+        <section class="results-section" data-aos="fade-up">
+            <h2 class="section-title">Resultados do Robotiza</h2>
+            <div class="results-grid">
+                <div class="result-item" data-aos="fade-up" data-aos-delay="100">
+                    <div class="result-circle">15+</div>
+                    <p>Processos automatizados</p>
+                </div>
+                <div class="result-item" data-aos="fade-up" data-aos-delay="200">
+                    <div class="result-circle">500+</div>
+                    <p>Horas de trabalho manual economizadas por mês</p>
+                </div>
+                 <div class="result-item" data-aos="fade-up" data-aos-delay="300">
+                    <div class="result-circle">99%</div>
+                    <p>Redução de erros em tarefas automatizadas</p>
+                </div>
+                 <div class="result-item" data-aos="fade-up" data-aos-delay="400">
+                    <div class="result-circle">RPA</div>
+                    <p>Tecnologia RPA implementada com sucesso</p>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Rodapé (igual ao index.html) -->
+    <footer>
+        <p>
+            <a href="https://seringallab.com" target="_blank" class="footer-icon">
+                <i class="fas fa-seedling"></i>
+            </a>
+            © 2025 Seringal Lab. Todos os direitos reservados. | <a href="index.html#contato">Contato</a> | <a href="#privacidade">Política de Privacidade</a>
+        </p>
+        <div class="social-icons">
+            <a href="https://www.mpac.mp.br/" target="_blank" aria-label="MPAC"><i class="fas fa-balance-scale"></i></a>
+            <a href="https://www.instagram.com/mpacre/" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+            <a href="https://wa.me/seu-numero-aqui" target="_blank" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+        </div>
+    </footer>
+
+    <!-- AOS (Animate On Scroll) JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+    <!-- Link para o arquivo JS externo -->
+    <script src="scripts.js"></script>
+    <script>
+         AOS.init({
+             duration: 800,
+             once: false
+         });
+    </script>
+</body>
+</html> 
