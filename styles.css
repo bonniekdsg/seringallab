@@ -1275,3 +1275,22 @@ main > section:last-of-type {
 .n8n-chat {
     font-family: var(--chat--font-family, 'Roboto', sans-serif);
 }
+
+/* Esconder o botão flutuante padrão do n8n-chat */
+.n8n-chat-toggle {
+    display: none !important; /* Usa !important para garantir a sobreposição */
+}
+
+/* Adiciona a imagem antes do título no cabeçalho do chat */
+.n8n-chat .chat-heading h1::before {
+    content: ''; /* Necessário para pseudo-elementos */
+    display: inline-block; /* Para permitir definir tamanho e margem */
+    width: 1.2em; /* Largura relativa ao tamanho da fonte */
+    height: 1.2em; /* Altura relativa ao tamanho da fonte */
+    margin-right: 0.4em; /* Espaço entre a imagem e o texto */
+    background-image: url('https://static.wixstatic.com/media/c96204_a2dfdfad8e09422f8c8ed939f7d7daa3~mv2.png');
+    background-size: contain; /* Ajusta a imagem para caber */
+    background-repeat: no-repeat;
+    background-position: center;
+    vertical-align: text-bottom; /* Tenta alinhar com a base do texto */
+}
