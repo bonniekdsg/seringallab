@@ -10,6 +10,180 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" />
     <!-- Link para o arquivo CSS externo -->
     <link rel="stylesheet" href="styles.css">
+    <style>
+        /* Estilos para a nova seção de chat em bora.html */
+        .chat-section {
+            padding: 40px 20px;
+            /* background-color: #f9f9f9; Mantendo o fundo branco padrão da página */
+            text-align: center;
+        }
+
+        .chat-section .section-title { /* Reutilizando e ajustando o estilo existente se houver */
+            font-size: 2.2em; /* Ajustado para combinar com outros títulos */
+            color: #333;
+            margin-bottom: 20px; /* Aumentar um pouco a margem inferior */
+            position: relative;
+            display: inline-block;
+        }
+
+        /* Linha abaixo do título, se o estilo global .section-title não tiver */
+        .chat-section .section-title::after {
+            content: '';
+            display: block;
+            width: 60px;
+            height: 3px; /* Ajustado */
+            background-color: var(--primary-color, #005A5B); /* VERDE SERINGALLAB FALLBACK */
+            margin: 10px auto 30px auto; /* Margem ajustada */
+        }
+
+        /* Estilos para os quebra-gelos */
+        .chat-quick-prompts {
+            padding: 10px 15px 5px 15px; /* Ajustar padding, menos embaixo */
+            display: flex;
+            flex-wrap: wrap; /* Para quebrar linha se necessário */
+            gap: 8px; /* Espaço entre os botões */
+            justify-content: center; /* Centralizar os botões se não preencherem a linha */
+            border-bottom: 1px solid var(--chat-input-area-border-color, #DCE0E2); /* Linha separadora sutil */
+            background-color: var(--chat-container-bg, #ffffff); /* Mesmo fundo do container */
+        }
+
+        .quick-prompt-btn {
+            padding: 8px 12px;
+            border-radius: 15px; /* Bordas arredondadas */
+            border: 1px solid var(--primary-color, #005A5B); /* Borda com cor primária */
+            background-color: var(--chat-bot-message-bg, #E8F0EE); /* Fundo claro, similar ao do bot */
+            color: var(--primary-color, #005A5B); /* Texto com cor primária */
+            font-size: 0.85em;
+            cursor: pointer;
+            transition: background-color 0.2s ease, color 0.2s ease;
+        }
+
+        .quick-prompt-btn:hover {
+            background-color: var(--primary-color, #005A5B);
+            color: var(--chat-user-message-text, white);
+        }
+
+        .chat-container {
+            max-width: 700px;
+            margin: 0 auto; /* Centralizado */
+            border: 1px solid var(--chat-container-border-color, #DCE0E2); /* CINZA CLARO FALLBACK */
+            border-radius: 12px; /* Mais arredondado */
+            background-color: var(--chat-container-bg, #ffffff); /* BRANCO FALLBACK */
+            box-shadow: 0 3px 8px rgba(0,0,0,0.07); /* Sombra mais suave */
+            display: flex;
+            flex-direction: column;
+            height: 500px; /* Altura fixa para o container do chat */
+            overflow: hidden; /* Para conter os cantos arredondados dos filhos */
+        }
+
+        .chat-messages {
+            flex-grow: 1;
+            padding: 20px;
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            background-color: var(--chat-messages-bg, #F7F9F9); /* CINZA MUITO CLARO/OFF-WHITE FALLBACK */
+        }
+
+        .chat-message {
+            padding: 10px 18px; /* Ajuste no padding */
+            border-radius: 20px; /* Mais "bubbly" */
+            max-width: 78%; /* Levemente maior */
+            line-height: 1.5;
+            word-wrap: break-word;
+            font-size: 0.95em;
+            text-align: left; /* Alinha o texto à esquerda dentro do balão */
+        }
+
+        .chat-message.user {
+            background-color: var(--primary-color, #005A5B); /* VERDE SERINGALLAB FALLBACK */
+            color: var(--chat-user-message-text, white); /* BRANCO FALLBACK */
+            align-self: flex-end;
+            border-bottom-right-radius: 6px; /* Detalhe no arredondamento */
+        }
+
+        .chat-message.bot {
+            background-color: var(--chat-bot-message-bg, #E8F0EE); /* CINZA ESVERDEADO MUITO CLARO FALLBACK */
+            color: var(--chat-bot-message-text, #333333); /* CINZA ESCURO FALLBACK */
+            align-self: flex-start;
+            border-bottom-left-radius: 6px; /* Detalhe no arredondamento */
+        }
+        
+        .chat-message.bot strong { /* Para a mensagem de "pensando..." */
+            font-weight: normal;
+            font-style: italic;
+            color: #555;
+        }
+
+
+        .chat-input-area {
+            display: flex;
+            padding: 15px;
+            background-color: #ffffff; /* Fundo branco fixo para a área de input */
+            border-top: 1px solid var(--chat-input-area-border-color, #DCE0E2); /* CINZA CLARO FALLBACK */
+        }
+
+        #chat-input {
+            flex-grow: 1;
+            padding: 12px 20px; /* Padding ajustado */
+            border: 1px solid var(--chat-input-border-color, #C0C6C9); /* CINZA MÉDIO FALLBACK */
+            border-radius: 20px; /* Mais arredondado */
+            margin-right: 10px;
+            font-size: 1em;
+            transition: border-color 0.2s ease, box-shadow 0.2s ease;
+            background-color: var(--chat-input-bg, #FCFCFC); /* BRANCO / CINZA MUITO SUTIL FALLBACK */
+            color: var(--chat-input-text, #333333); /* CINZA ESCURO FALLBACK */
+        }
+
+        #chat-input:focus {
+            outline: none;
+            border-color: var(--primary-color-dark, #004039); /* VERDE SERINGALLAB ESCURO FALLBACK */
+            box-shadow: 0 0 0 0.15rem var(--focus-ring-color, rgba(0, 90, 91, 0.25)); /* VERDE SERINGALLAB COM ALPHA FALLBACK */
+        }
+
+        #send-chat-btn {
+            padding: 12px 22px; /* Padding ajustado */
+            background-color: var(--primary-color, #005A5B); /* VERDE SERINGALLAB FALLBACK */
+            color: var(--send-btn-text-color, white); /* BRANCO FALLBACK */
+            border: none;
+            border-radius: 20px; /* Mais arredondado */
+            cursor: pointer;
+            font-size: 1em;
+            font-weight: 500; /* Peso da fonte */
+            transition: background-color 0.2s ease;
+        }
+
+        #send-chat-btn:hover {
+            background-color: var(--primary-color-dark, #004039); /* VERDE SERINGALLAB ESCURO FALLBACK */
+        }
+
+        /* Responsividade */
+        @media (max-width: 768px) {
+            .chat-container {
+                height: 80vh; /* Usar vh para melhor adaptação em telas menores */
+                max-height: 500px; /* Limitar altura máxima */
+            }
+            .chat-section .section-title {
+                font-size: 2em;
+            }
+            .chat-message {
+                max-width: 85%;
+                font-size: 0.9em;
+            }
+            #chat-input {
+                padding: 10px 15px;
+                font-size: 0.95em;
+            }
+            #send-chat-btn {
+                padding: 10px 20px;
+                font-size: 0.95em;
+            }
+            .chat-input-area {
+                padding: 10px;
+            }
+        }
+    </style>
 </head>
 <body>
     <!-- Header (igual ao index.html) -->
@@ -39,8 +213,6 @@
         <section class="initiative-hero" style="background-image: url('https://static.wixstatic.com/media/c96204_cf4730be8cad40208c591f9f72c376aa~mv2.png');" data-aos="fade-in">
             <h1>Bora!</h1>
             <p class="hero-description">A rede de talentos do MPAC.</p>
-            <!-- Botão pode levar para a plataforma ou mais informações -->
-            <button class="initiative-hero-btn">Conheça a Rede</button>
         </section>
 
         <!-- Seção Sobre a Iniciativa -->
@@ -66,64 +238,26 @@
             </div>
         </section>
 
-        <!-- Seção Testimonials (Adaptar com depoimentos sobre o Bora!) -->
-        <section class="testimonials" data-aos="fade-up">
-            <h2 class="section-title">Conexões Geradas</h2>
-            <div class="testimonials-grid">
-                <div class="testimonial-item" data-aos="fade-up" data-aos-delay="100">
-                    <img src="https://static.wixstatic.com/media/c96204_6ccee48e339541f8a58b9dbc0b7a3308~mv2.png" alt="Foto Colaborador X">
-                    <div class="testimonial-text">
-                        <p>"Encontrei no Bora! um colega com la expertise exata que precisava para destravar um projeto. Foi fundamental!"</p>
-                        <cite>- Gestor de Projeto</cite>
-                    </div>
+        <!-- Seção Chat Bora! -->
+        <section id="bora-chat" class="chat-section" data-aos="fade-up">
+            <h2 class="section-title">Converse com o Bora!</h2>
+            <div class="chat-container">
+                <div class="chat-messages">
+                    <!-- As mensagens do chat aparecerão aqui -->
                 </div>
-                <div class="testimonial-item" data-aos="fade-up" data-aos-delay="200">
-                    <img src="https://static.wixstatic.com/media/c96204_6ccee48e339541f8a58b9dbc0b7a3308~mv2.png" alt="Foto Colaborador Y">
-                    <div class="testimonial-text">
-                        <p>"Pude compartilhar minhas habilidades em análise de dados e colaborar com uma área diferente da minha. Muito enriquecedor!"</p>
-                        <cite>- Analista MPAC</cite>
-                    </div>
+                <div class="chat-quick-prompts">
+                    <button class="quick-prompt-btn">Preciso de ajuda em eventos! 🤯</button>
+                    <button class="quick-prompt-btn">Alguém pode me ajudar em elaboração textual? ✍️</button>
+                    <button class="quick-prompt-btn">Onde estão os ninjas do Excel? 📊</button>
+                    <button class="quick-prompt-btn">E os artistas do MPAC? 🎤🎭</button>
                 </div>
-                <!-- Adicionar mais testimonials se disponíveis -->
-                <div class="testimonial-item" data-aos="fade-up" data-aos-delay="300">
-                    <img src="https://static.wixstatic.com/media/c96204_6ccee48e339541f8a58b9dbc0b7a3308~mv2.png" alt="Foto Colaborador Z">
-                    <div class="testimonial-text">
-                        <p>"Descobri oportunidades de desenvolvimento que nem sabia que existiam dentro do MPAC através do Bora!."</p>
-                        <cite>- Técnico MPAC</cite>
-                    </div>
-                </div>
-                 <div class="testimonial-item" data-aos="fade-up" data-aos-delay="400">
-                    <img src="https://static.wixstatic.com/media/c96204_6ccee48e339541f8a58b9dbc0b7a3308~mv2.png" alt="Foto Colaborador W">
-                    <div class="testimonial-text">
-                        <p>"A plataforma facilitou a busca por mentores e a troca de experiências entre diferentes setores."</p>
-                        <cite>- Estagiário MPAC</cite>
-                    </div>
+                <div class="chat-input-area">
+                    <input type="text" id="chat-input" placeholder="Pergunte sobre talentos, projetos e conexões...">
+                    <button id="send-chat-btn">Enviar</button>
                 </div>
             </div>
         </section>
 
-        <!-- Seção Resultados (Adaptar com métricas do Bora!) -->
-        <section class="results-section" data-aos="fade-up">
-            <h2 class="section-title">Resultados do Bora!</h2>
-            <div class="results-grid">
-                <div class="result-item" data-aos="fade-up" data-aos-delay="100">
-                    <div class="result-circle">150+</div>
-                    <p>Perfis cadastrados</p>
-                </div>
-                <div class="result-item" data-aos="fade-up" data-aos-delay="200">
-                    <div class="result-circle">30+</div>
-                    <p>Conexões realizadas</p>
-                </div>
-                 <div class="result-item" data-aos="fade-up" data-aos-delay="300">
-                    <div class="result-circle">10+</div>
-                    <p>Projetos colaborativos iniciados</p>
-                </div>
-                 <div class="result-item" data-aos="fade-up" data-aos-delay="400">
-                    <div class="result-circle">Top 5</div>
-                    <p>Habilidades mais buscadas identificadas</p>
-                </div>
-            </div>
-        </section>
     </main>
 
     <!-- Rodapé (igual ao index.html) -->
@@ -145,6 +279,209 @@
     <!-- Scripts -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
     <script src="scripts.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const chatSection = document.getElementById('bora-chat');
+            if (!chatSection) return; // Só executa se a seção de chat existir
+
+            const chatMessages = chatSection.querySelector('.chat-messages');
+            const chatInput = chatSection.querySelector('#chat-input');
+            const sendChatBtn = chatSection.querySelector('#send-chat-btn');
+            const webhookUrl = 'https://workflow-n8n.3rx554.easypanel.host/webhook/e03700e7-47f6-4c46-accc-6c9cec089048';
+            const quickPromptsContainer = chatSection.querySelector('.chat-quick-prompts');
+            let firstMessageSent = false;
+
+            function einfacheMarkdownZuHtml(markdown) {
+                if (typeof markdown !== 'string') {
+                    return '';
+                }
+
+                let html = markdown;
+
+                // Títulos (ex: # Título, ## Título)
+                html = html.replace(/^### (.*$)/gim, '<h3>$1</h3>');
+                html = html.replace(/^## (.*$)/gim, '<h2>$1</h2>');
+                html = html.replace(/^# (.*$)/gim, '<h1>$1</h1>');
+
+                // Negrito (ex: **texto** ou __texto__)
+                html = html.replace(/\*\*(.*?)\*\*/gim, '<strong>$1</strong>');
+                html = html.replace(/__(.*?)__/gim, '<strong>$1</strong>');
+
+                // Itálico (ex: *texto* ou _texto_)
+                // Cuidado para não confundir com listas não ordenadas que usam *
+                html = html.replace(/(?<!\*)\*(?!\*|_)(.*?)(?<!_)\*(?!\*)/gim, '<em>$1</em>');
+                html = html.replace(/(?<!_)_(?!_)(.*?)(?<!_)_(?!_)/gim, '<em>$1</em>');
+
+
+                // Links no formato Markdown: [texto](url)
+                html = html.replace(/\[([^\]]+)\]\(([^)]+)\)/gim, '<a href="$2" target="_blank">$1</a>');
+                
+                // URLs simples para links clicáveis (uma tentativa mais genérica)
+                // Regex para encontrar URLs que não estão já dentro de uma tag <a> ou src="...", href="..."
+                const urlRegex = /((?:https?:\/\/|www\.)(?:[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b)(?:[-a-zA-Z0-9()@:%_\+.~#?&//=]*))/gi;
+                html = html.replace(urlRegex, (match, p1) => {
+                    // Verifica se o match já está dentro de uma tag <a> href ou <img> src
+                    const surroundingText = html.substring(html.indexOf(match) - 10, html.indexOf(match) + match.length + 10);
+                    if (surroundingText.includes('href="'+match) || surroundingText.includes('src="'+match)) {
+                        return match; // Já é parte de um link ou imagem, não mexe
+                    }
+                    const url = match.startsWith('www.') ? 'http://' + match : match;
+                    return `<a href="${url}" target="_blank">${match}</a>`;
+                });
+
+                // Listas não ordenadas (ex: * item ou - item)
+                html = html.replace(/^\* (.*$)/gim, '<ul>\n<li>$1</li>\n</ul>');
+                html = html.replace(/^- (.*$)/gim, '<ul>\n<li>$1</li>\n</ul>');
+                // Agrupa múltiplos  LIs dentro de um único UL
+                html = html.replace(/<\/ul>\s*<ul>/gim, '');
+
+                // Listas ordenadas (ex: 1. item)
+                html = html.replace(/^\d+\. (.*$)/gim, '<ol>\n<li>$1</li>\n</ol>');
+                // Agrupa múltiplos LIs dentro de um único OL
+                html = html.replace(/<\/ol>\s*<ol>/gim, '');
+
+                // Blocos de código (ex: ```código```)
+                html = html.replace(/```([^```]+)```/gim, '<pre><code>$1</code></pre>');
+                // Código inline (ex: `código`)
+                html = html.replace(/`([^`]+)`/gim, '<code>$1</code>');
+
+                // Quebras de linha para <br>
+                html = html.replace(/\n/gim, '<br>');
+
+                return html;
+            }
+
+
+            function addMessageToChat(text, sender, isThinking = false) {
+                const messageElement = document.createElement('div');
+                messageElement.classList.add('chat-message', sender);
+                if (isThinking) {
+                    const strong = document.createElement('strong');
+                    strong.textContent = text;
+                    messageElement.appendChild(strong);
+                } else {
+                    if (sender === 'bot') {
+                        messageElement.innerHTML = einfacheMarkdownZuHtml(text);
+                    } else {
+                        messageElement.textContent = text; // Mensagens do usuário não precisam de formatação Markdown
+                    }
+                }
+                chatMessages.appendChild(messageElement);
+                chatMessages.scrollTop = chatMessages.scrollHeight;
+                return messageElement; 
+            }
+
+            // Função para ocultar os quebra-gelos
+            function hideQuickPrompts() {
+                if (quickPromptsContainer) {
+                    quickPromptsContainer.style.display = 'none';
+                }
+            }
+
+            async function handleSendMessage() {
+                const userMessage = chatInput.value.trim();
+                if (!userMessage) return;
+
+                addMessageToChat(userMessage, 'user');
+                chatInput.value = '';
+                chatInput.disabled = true;
+                sendChatBtn.disabled = true;
+
+                if (!firstMessageSent) {
+                    hideQuickPrompts();
+                    firstMessageSent = true;
+                }
+
+                let thinkingMessageElement = addMessageToChat('Bora! está buscando as melhores conexões para você...', 'bot', true);
+
+                try {
+                    const response = await fetch(webhookUrl, {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                        },
+                        body: JSON.stringify({ question: userMessage }),
+                    });
+
+                    if (thinkingMessageElement) {
+                        chatMessages.removeChild(thinkingMessageElement);
+                        thinkingMessageElement = null;
+                    }
+
+                    if (!response.ok) {
+                        let errorData = 'Erro desconhecido do servidor.';
+                        try {
+                            const errorJson = await response.json();
+                            errorData = errorJson.message || JSON.stringify(errorJson);
+                        } catch (e) {
+                            errorData = await response.text() || `HTTP error ${response.status}`;
+                        }
+                        console.error('N8N response error:', response.status, errorData);
+                        addMessageToChat(`Desculpe, tive um problema para responder (Erro: ${errorData}). Tente novamente.`, 'bot');
+                        return;
+                    }
+
+                    const data = await response.json(); 
+
+                    let botResponseText = 'Não entendi a resposta do servidor.'; 
+                    if (data && data.answer) { 
+                        botResponseText = data.answer;
+                    } else if (data && data.text) { 
+                        botResponseText = data.text;
+                    } else if (data && data.message) { 
+                        botResponseText = data.message;
+                    } else if (typeof data === 'string') { 
+                        botResponseText = data;
+                    } else if (Array.isArray(data) && data.length > 0 && typeof data[0] === 'object' && data[0] !== null && data[0].text) {
+                         botResponseText = data.map(item => item.text).join('\n');
+                    } else if (Array.isArray(data) && data.length > 0 && typeof data[0] === 'string') {
+                        botResponseText = data.join('\n');
+                    } else if (typeof data === 'object' && data !== null && Object.keys(data).length > 0) {
+                        const firstStringValue = Object.values(data).find(v => typeof v === 'string');
+                        if (firstStringValue) {
+                            botResponseText = firstStringValue;
+                        } else {
+                            console.warn("Resposta do N8N não reconhecida:", data);
+                            botResponseText = "Recebi uma resposta, mas não consegui formatá-la adequadamente."
+                        }
+                    }
+
+                    addMessageToChat(botResponseText, 'bot');
+
+                } catch (error) {
+                    console.error('Error sending/receiving message from n8n:', error);
+                    if (thinkingMessageElement) {
+                        chatMessages.removeChild(thinkingMessageElement);
+                    }
+                    addMessageToChat('Desculpe, ocorreu um erro de comunicação. Tente mais tarde.', 'bot');
+                } finally {
+                    chatInput.disabled = false;
+                    sendChatBtn.disabled = false;
+                    chatInput.focus();
+                }
+            }
+
+            // Adiciona listeners para os botões de quebra-gelo
+            const quickPromptButtons = chatSection.querySelectorAll('.quick-prompt-btn');
+            quickPromptButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    chatInput.value = button.textContent || button.innerText; // Preenche o input
+                    chatInput.focus(); // Foca no input
+                    // Opcional: poderia chamar handleSendMessage() diretamente aqui se quisesse envio automático
+                });
+            });
+
+            sendChatBtn.addEventListener('click', handleSendMessage);
+            chatInput.addEventListener('keypress', (event) => {
+                if (event.key === 'Enter' && !event.shiftKey) { 
+                    event.preventDefault(); 
+                    handleSendMessage();
+                }
+            });
+
+            addMessageToChat('Olá! Sou o assistente virtual do Bora!. Como posso ajudar você a encontrar talentos ou oportunidades no MPAC hoje?', 'bot');
+        });
+    </script>
     <script>
          AOS.init({
              duration: 800,
