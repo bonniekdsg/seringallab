@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="pt" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Anton.IA - Seringal Lab</title>
+    <!-- Font Awesome para ícones -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- AOS (Animate On Scroll) CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" />
+    <!-- Link para o arquivo CSS externo -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Header (igual ao index.html) -->
+    <header>
+        <div class="logo">
+            <!-- Link para voltar ao index.html -->
+            <a href="index.html">
+                <img src="https://static.wixstatic.com/media/c96204_a91c5c5f89ef478291cf0c176a59efab~mv2.png" alt="SeringalLab Logo">
+            </a>
+        </div>
+        <button class="menu-toggle" aria-label="Menu">☰</button>
+        <!-- Links do menu precisam apontar para index.html#secao ou serem ajustados -->
+        <ul class="nav-menu">
+            <li><a href="index.html#inicio">Início</a></li>
+            <li><a href="index.html#sobre">Sobre</a></li>
+            <li><a href="index.html#iniciativas">Iniciativas</a></li>
+            <li><a href="index.html#destaque">Destaques</a></li>
+            <li><a href="index.html#blog">Blog</a></li>
+            <li><a href="index.html#contato">Contato</a></li>
+        </ul>
+        <div class="search-container">
+            <input type="text" class="search-box" placeholder="Pesquisar iniciativas...">
+            <button class="search-btn"><i class="fas fa-search"></i></button>
+        </div>
+    </header>
+
+    <main>
+        <!-- Seção Hero da Iniciativa -->
+        <section class="initiative-hero" style="background-image: url('https://static.wixstatic.com/media/c96204_c4fd31b7d3ca4c73ab7c7a160102be54~mv2.png');" data-aos="fade-in">
+            <!-- Usar a imagem da iniciativa como fundo -->
+            <h1>Anton.IA</h1>
+            <p class="hero-description">A assistente inteligente do MPAC.</p>
+            <button class="initiative-hero-btn">Acessar Anton.IA</button>
+        </section>
+
+        <!-- Seção Sobre a Iniciativa -->
+        <section class="about-initiative" data-aos="fade-up">
+            <h2 class="section-title">Sobre a Anton.IA</h2>
+            <div class="about-grid">
+                <div class="about-item" data-aos="fade-up" data-aos-delay="100">
+                    <div class="icon-circle"><i class="fas fa-brain"></i></div>
+                    <p>A assistente virtual inteligente desenvolvida pelo Seringal Lab para otimizar tarefas e fornecer informações rápidas no MPAC.</p>
+                </div>
+                <div class="about-item" data-aos="fade-up" data-aos-delay="200">
+                    <div class="icon-circle"><i class="fas fa-comments"></i></div>
+                    <p>Capaz de responder perguntas sobre conteúdos em PDF e de sua própria base de conhecimento, além de orquestrar outras IAs.</p>
+                </div>
+                <div class="about-item" data-aos="fade-up" data-aos-delay="300">
+                    <div class="icon-circle"><i class="fas fa-cogs"></i></div>
+                    <p>Utiliza processamento de linguagem natural para entender e interagir com os usuários de forma eficiente e intuitiva.</p>
+                </div>
+                <div class="about-item" data-aos="fade-up" data-aos-delay="400">
+                    <div class="icon-circle"><i class="fas fa-rocket"></i></div>
+                    <p>Aumenta a produtividade e a acessibilidade da informação.</p>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Rodapé (igual ao index.html) -->
+    <footer>
+        <p>
+            <a href="https://seringallab.com" target="_blank" class="footer-icon">
+                <i class="fas fa-seedling"></i>
+            </a>
+            © 2025 Seringal Lab. Todos os direitos reservados. | <a href="index.html#contato">Contato</a> | <a href="#privacidade">Política de Privacidade</a>
+        </p>
+        <div class="social-icons">
+            <a href="https://www.mpac.mp.br/" target="_blank" aria-label="MPAC"><img src="https://static.wixstatic.com/media/c96204_a62a9c98ecb44272a7f9f7d475555388~mv2.png" alt="MPAC Icon"></a>
+            <a href="https://www.instagram.com/mpacre/" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+            <a href="https://wa.me/seu-numero-aqui" target="_blank" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+        </div>
+    </footer>
+
+    <!-- AOS (Animate On Scroll) JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+    <!-- Link para o arquivo JS externo -->
+    <!-- Nota: o script.js pode precisar de ajustes se tiver lógicas específicas do index.html -->
+    <script src="scripts.js"></script>
+    <script>
+        // Garante que o AOS seja inicializado nesta página também
+        // A inicialização no script.js pode não ser suficiente dependendo da ordem
+         AOS.init({
+             duration: 800,
+             once: false // Permite re-animação ao rolar para cima/baixo
+         });
+         // Se o script.js tiver lógica muito específica do index.html,
+         // pode ser necessário movê-la ou duplicá-la aqui de forma seletiva.
+         // Por exemplo, a lógica dos flip cards não existe nesta página.
+         // A lógica do menu, pesquisa, tema, etc., deve funcionar.
+    </script>
+</body>
+</html>

@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="pt" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MPAC Lab - Seringal Lab</title>
+    <!-- Font Awesome para ícones -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- AOS (Animate On Scroll) CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" />
+    <!-- Link para o arquivo CSS externo -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Header (igual ao index.html) -->
+    <header>
+        <div class="logo">
+            <a href="index.html">
+                <img src="https://static.wixstatic.com/media/c96204_a91c5c5f89ef478291cf0c176a59efab~mv2.png" alt="SeringalLab Logo">
+            </a>
+        </div>
+        <button class="menu-toggle" aria-label="Menu">☰</button>
+        <ul class="nav-menu">
+            <li><a href="index.html#inicio">Início</a></li>
+            <li><a href="index.html#sobre">Sobre</a></li>
+            <li><a href="index.html#iniciativas">Iniciativas</a></li>
+            <li><a href="index.html#destaque">Destaques</a></li>
+            <li><a href="index.html#blog">Blog</a></li>
+            <li><a href="index.html#contato">Contato</a></li>
+        </ul>
+        <div class="search-container">
+            <input type="text" class="search-box" placeholder="Pesquisar iniciativas...">
+            <button class="search-btn"><i class="fas fa-search"></i></button>
+        </div>
+    </header>
+
+    <main>
+        <!-- Seção Hero da Iniciativa -->
+        <section class="initiative-hero" style="background-image: url('https://static.wixstatic.com/media/c96204_6254ffdbbab64dfbb909b7fa26ee3934~mv2.png');" data-aos="fade-in">
+            <h1>MPAC Lab</h1>
+            <p class="hero-description">Plataforma de treinamento em Python e Inteligência Artificial.</p>
+            <a href="https://mpaclab.mpac.mp.br/" target="_blank" class="initiative-hero-btn">Acessar</a>
+        </section>
+
+        <!-- Seção Sobre a Iniciativa -->
+        <section class="about-initiative" data-aos="fade-up">
+            <h2 class="section-title">Sobre o MPAC Lab</h2>
+            <div class="about-grid">
+                <div class="about-item" data-aos="fade-up" data-aos-delay="100">
+                    <div class="icon-circle"><i class="fab fa-python"></i></div>
+                    <p>Plataforma online de capacitação em programação Python e conceitos de Inteligência Artificial.</p>
+                </div>
+                <div class="about-item" data-aos="fade-up" data-aos-delay="200">
+                    <div class="icon-circle"><i class="fas fa-laptop-code"></i></div>
+                    <p>Oferece cursos, tutoriais e desafios práticos para membros e servidores do MPAC.</p>
+                </div>
+                <div class="about-item" data-aos="fade-up" data-aos-delay="300">
+                    <div class="icon-circle"><i class="fas fa-brain"></i></div>
+                    <p>Foco em aplicações práticas de IA e análise de dados para a realidade do Ministério Público.</p>
+                </div>
+                <div class="about-item" data-aos="fade-up" data-aos-delay="400">
+                    <div class="icon-circle"><i class="fas fa-graduation-cap"></i></div>
+                    <p>Estimula o desenvolvimento de habilidades digitais essenciais para a transformação institucional.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Seção Testimonials -->
+        <section class="testimonials" data-aos="fade-up">
+            <h2 class="section-title">Alunos do MPAC Lab</h2>
+            <div class="testimonials-grid">
+                <div class="testimonial-item" data-aos="fade-up" data-aos-delay="100">
+                    <img src="https://static.wixstatic.com/media/c96204_6ccee48e339541f8a58b9dbc0b7a3308~mv2.png" alt="Foto Aluno 1">
+                    <div class="testimonial-text">
+                        <p>"O MPAC Lab vem para desburocratizar o aprendizado e desenvolvimento de agentes de IA. Ele permite que a gente se aproxime de um tema complexo, mas urgente, de forma acessível e prática. Assim, disponibilizamos para todos a oportunidade de trazer tecnologia e inovação para a instituição."</p>
+                        <cite>- Hycaro Mattos - Analista Ministerial</cite>
+                    </div>
+                </div>
+                <div class="testimonial-item" data-aos="fade-up" data-aos-delay="200">
+                    <img src="https://static.wixstatic.com/media/c96204_6ccee48e339541f8a58b9dbc0b7a3308~mv2.png" alt="Foto Aluno 2">
+                    <div class="testimonial-text">
+                        <p>"Com essa ferramenta é possível estudar a linguagem de programação de uma forma bastante intuitiva e fácil. Para usuários iniciantes é muito bom e tem muitas funcionalidades que facilitam o aprendizado. Gostei bastante de usar."</p>
+                        <cite>- Igor Lins – Obs. Criminal </cite>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Seção Resultados -->
+        <section class="results-section" data-aos="fade-up">
+            <h2 class="section-title">Resultados do MPAC Lab</h2>
+            <div class="results-summary-card">
+                <div class="summary-item">
+                    <i class="fas fa-trophy summary-icon"></i>
+                    <div class="summary-text">
+                        <h3>Destaque Nacional</h3>
+                        <p>Selecionado para apresentação no <strong>Enastic 2025</strong>, destacando-se como referência em inovação.</p>
+                    </div>
+                </div>
+                <div class="summary-item">
+                    <i class="fas fa-flask summary-icon"></i>
+                    <div class="summary-text">
+                        <h3>Sandbox de Inovação</h3>
+                        <p>Ambiente de desenvolvimento e teste para soluções como <strong>Anton.IA</strong> e <strong>TranscreveAI</strong>.</p>
+                    </div>
+                </div>
+                <div class="summary-item">
+                    <i class="fas fa-rocket summary-icon"></i>
+                    <div class="summary-text">
+                        <h3>Transformação Digital</h3>
+                        <p>Fortalece o uso estratégico da tecnologia, impulsionando a eficiência no MPAC.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Rodapé (igual ao index.html) -->
+    <footer>
+        <p>
+            <a href="https://seringallab.com" target="_blank" class="footer-icon">
+                <i class="fas fa-seedling"></i>
+            </a>
+            © 2025 Seringal Lab. Todos os direitos reservados. | <a href="index.html#contato">Contato</a> | <a href="#privacidade">Política de Privacidade</a>
+        </p>
+        <div class="social-icons">
+            <a href="https://www.mpac.mp.br/" target="_blank" aria-label="MPAC"><img src="https://static.wixstatic.com/media/c96204_a62a9c98ecb44272a7f9f7d475555388~mv2.png" alt="MPAC Icon"></a>
+            <a href="https://www.instagram.com/mpacre/" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+            <a href="https://wa.me/seu-numero-aqui" target="_blank" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+        </div>
+    </footer>
+
+    <!-- AOS (Animate On Scroll) JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+    <!-- Link para o arquivo JS externo -->
+    <script src="scripts.js"></script>
+    <script>
+         AOS.init({
+             duration: 800,
+             once: false
+         });
+    </script>
+</body>
+</html> 

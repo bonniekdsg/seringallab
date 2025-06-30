@@ -1,0 +1,1423 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500;700&display=swap');
+
+/* Variáveis para temas */
+:root {
+    --bg-color: #f4f4f4;
+    --text-color: #333333;
+    --header-bg: #015351;
+    --header-text: #ffffff;
+    --card-bg: #79b31f;
+    --card-text: #ffffff;
+    --accent-color: #a7ea26;
+    --shadow-color: rgba(0, 0, 0, 0.2);
+    --footer-bg: #015351;
+    --footer-text: #ffffff;
+    --input-bg: #ffffff;
+    --input-text: #333333;
+    --cookie-bg: #f5f5f5;
+    --cookie-text: #333333;
+    --transition-speed: 0.5s;
+
+    /* Cores Primárias (baseadas no tema Seringal) */
+    --chat--color-primary: #015351; /* Valor de --header-bg */
+    --chat--color-primary-shade-50: #014542; /* Tom mais escuro calculado */
+    --chat--color-primary-shade-100: #003734; /* Tom ainda mais escuro calculado */
+    
+    /* Cor Secundária (mensagens do usuário, baseada no tema Seringal) */
+    --chat--color-secondary: #79b31f; /* Valor de --card-bg */
+    --chat--color-secondary-shade-50: #68991b; /* Tom mais escuro calculado */
+    
+    /* Cores Gerais */
+    --chat--color-white: #ffffff;
+    --chat--color-light: #f4f4f4; /* Valor de --bg-color */
+    --chat--color-dark: #333333; /* Valor de --text-color */
+
+    /* Ajustes de UI/UX Seringal */
+    --chat--font-family: 'Roboto', sans-serif; 
+    --chat--border-radius: 10px; 
+    --chat--message--border-radius: 10px; 
+    --chat--window--width: 380px; 
+    --chat--window--height: 550px; 
+    --chat--textarea--height: 45px; 
+
+    /* Cabeçalho do Chat */
+    --chat--header--background: var(--chat--color-primary); 
+    --chat--header--color: var(--chat--color-white); /* Valor de --header-text */
+    
+    /* Mensagens */
+    --chat--message--bot--background: #f0f0f0; /* Um cinza um pouco diferente do fundo geral */
+    --chat--message--bot--color: #333333; /* Texto escuro no fundo claro */
+    --chat--message--user--background: var(--chat--color-secondary);
+    --chat--message--user--color: var(--chat--color-white); /* Valor de --card-text */
+
+    /* Botão Toggle */
+    --chat--toggle--background: var(--chat--color-primary);
+    --chat--toggle--hover--background: #a7ea26;
+    --chat--toggle--active--background: var(--chat--color-primary-shade-100);
+    --chat--toggle--color: var(--chat--color-white); /* Valor de --header-text para o ícone */
+}
+
+/* Tema escuro */
+[data-theme="dark"] {
+    --bg-color: #1a1a1a;
+    --text-color: #f0f0f0;
+    --header-bg: #012e2c;
+    --header-text: #ffffff;
+    --card-bg: #517a15;
+    --card-text: #ffffff;
+    --accent-color: #8bc020;
+    --shadow-color: rgba(0, 0, 0, 0.5);
+    --footer-bg: #012e2c;
+    --footer-text: #ffffff;
+    --input-bg: #2c2c2c;
+    --input-text: #f0f0f0;
+    --cookie-bg: #2c2c2c;
+    --cookie-text: #f0f0f0;
+
+    /* Sobrescreve variáveis para o tema escuro Seringal */
+    --chat--color-primary: #012e2c; /* Valor de --header-bg (dark) */
+    --chat--color-primary-shade-50: #012523; /* Tom mais escuro calculado */
+    --chat--color-primary-shade-100: #001c1a; /* Tom ainda mais escuro calculado */
+    
+    --chat--color-secondary: #517a15; /* Valor de --card-bg (dark) */
+    --chat--color-secondary-shade-50: #416311; /* Tom mais escuro calculado */
+
+    --chat--color-light: #1a1a1a; /* Valor de --bg-color (dark) */
+    --chat--color-dark: #f0f0f0; /* Valor de --text-color (dark) */
+
+    /* Ajustes de UI/UX Seringal (Escuro) */
+     --chat--font-family: 'Roboto', sans-serif;
+    --chat--border-radius: 10px;
+    --chat--message--border-radius: 10px;
+
+    /* Cabeçalho do Chat */
+    --chat--header--background: var(--chat--color-primary);
+    --chat--header--color: var(--chat--color-white); /* Valor de --header-text (dark) */
+
+    /* Mensagens */
+    --chat--message--bot--background: #2c2c2c; /* Fundo do bot (escuro) */
+    --chat--message--bot--color: #f0f0f0; /* Texto claro no fundo escuro */
+    --chat--message--user--background: var(--chat--color-secondary);
+    --chat--message--user--color: var(--chat--color-white); /* Valor de --card-text (dark) */
+
+    /* Botão Toggle */
+     --chat--toggle--background: var(--chat--color-primary);
+    --chat--toggle--hover--background: #a7ea26;
+    --chat--toggle--active--background: var(--chat--color-primary-shade-100);
+    --chat--toggle--color: var(--chat--color-white); /* Valor de --header-text (dark) para o ícone */
+}
+
+/* Reset básico */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    transition: background-color var(--transition-speed), color var(--transition-speed);
+}
+
+/* Garantir que html e body não tenham margens/paddings indesejados */
+html {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    display: block;
+}
+
+/* Estilo base do body */
+body {
+    display: block;
+    font-family: 'Roboto', sans-serif;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    min-height: 100vh;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    margin: 0;
+    padding: 0;
+    padding-top: 60px;
+    box-sizing: border-box;
+    position: relative;
+    vertical-align: top;
+    line-height: initial;
+}
+
+/* Header */
+header {
+    background-color: var(--header-bg);
+    color: var(--header-text);
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 5%;
+    margin: 0;
+    box-shadow: 0 2px 5px var(--shadow-color);
+    width: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+}
+
+/* Logo */
+.logo {
+    display: flex;
+    align-items: center;
+}
+
+.logo img {
+    max-width: 100%;
+    height: auto;
+    width: 250px;
+    max-height: 55px;
+}
+
+/* Menu de navegação */
+.nav-menu {
+    display: flex;
+    list-style: none;
+    gap: 30px;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.menu-toggle {
+    display: none;
+    font-size: 24px;
+    background: none;
+    border: none;
+    color: var(--header-text);
+    cursor: pointer;
+    padding: 10px;
+}
+
+.nav-menu li a {
+    text-decoration: none;
+    color: var(--header-text);
+    font-size: 15px;
+    position: relative;
+    transition: color 0.5s ease;
+}
+
+.nav-menu li a:hover {
+    color: var(--accent-color);
+}
+
+.nav-menu li a:hover::after {
+    content: "";
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background-color: var(--accent-color);
+}
+
+/* Área de pesquisa */
+.search-container {
+    position: relative;
+    display: flex;
+    align-items: center;
+    margin-left: 20px;
+    z-index: 11;
+}
+
+.search-box {
+    padding: 8px 12px;
+    padding-right: 35px;
+    border-radius: 20px;
+    border: none;
+    background-color: var(--input-bg);
+    color: var(--input-text);
+    width: 0;
+    opacity: 0;
+    transition: width 0.3s ease, opacity 0.3s ease;
+    font-family: 'Roboto', sans-serif;
+}
+
+.search-box.active {
+    width: 200px;
+    opacity: 1;
+}
+
+.search-btn {
+    background: none;
+    border: none;
+    color: var(--header-text);
+    cursor: pointer;
+    font-size: 16px;
+    position: absolute;
+    right: 10px;
+    z-index: 12;
+    transition: color 0.3s ease;
+}
+
+/* Título com imagem de fundo */
+.title-container {
+    position: relative; /* Necessário para posicionar o vídeo e o conteúdo */
+    height: 300px; /* Ou a altura desejada para a seção hero */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: white;
+    overflow: hidden; /* Garante que o vídeo não ultrapasse os limites */
+}
+
+.title-container::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #015351;
+    opacity: 0.7; /* Controle a intensidade da cor aqui */
+    z-index: 0;
+}
+
+.hero-video {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    min-width: 100%;
+    min-height: 100%;
+    width: auto;
+    height: auto;
+    z-index: -1; /* Coloca o vídeo atrás do conteúdo */
+    background-size: cover;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 1; /* Garante que o conteúdo fique na frente do vídeo */
+}
+
+.title-container h2 {
+    font-family: 'Oswald', sans-serif;
+    font-size: 38px; /* Tamanho da fonte */
+    font-weight: 300;
+    margin-bottom: 30px;
+    position: relative;
+    letter-spacing: 5px;
+    z-index: 1;
+    padding: 10px;
+    display: inline-block;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+}
+
+/* Logo abaixo do título */
+.title-container .logo-below {
+    margin-top: 10px;
+    position: relative;
+    z-index: 1;
+}
+
+.title-container .logo-below img {
+    max-width: 100%;
+    height: auto;
+    width: 350px;
+    max-height: 77px;
+}
+
+/* Título das Iniciativas */
+.initiatives-title {
+    text-align: center;
+    margin-top: 20px;
+    width: 100%;
+}
+
+.initiatives-title h1 {
+    font-family: 'Oswald', sans-serif;
+    font-weight: 400;
+    font-size: 28px;
+    letter-spacing: 5px;
+    color: var(--text-color);
+    margin: 0;
+}
+
+.initiatives-title hr {
+    width: 100px;
+    height: 3px;
+    background-color: var(--accent-color);
+    border: none;
+    margin: 8px auto 0;
+}
+
+/* Grid Container */
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 30px;
+    margin: 20px auto;
+    width: 90%;
+    max-width: 1200px;
+}
+
+/* Flip Card */
+.flip-card {
+    width: 100%;
+    height: 200px;
+    opacity: 0;
+    transform: translateY(50px);
+    position: relative;
+    overflow: hidden;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px var(--shadow-color);
+    box-sizing: border-box;
+    transition: opacity 1.5s ease-in-out, transform 1.5s ease-in-out;
+}
+
+.flip-card.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Frente do cartão */
+.flip-card-front {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-size: cover;
+    background-position: center;
+    transition: transform 0.5s ease-in-out;
+    box-sizing: border-box;
+    cursor: pointer;
+}
+
+/* Verso do cartão */
+.flip-card-back {
+    width: 100%;
+    height: 100%;
+    background-color: var(--card-bg);
+    color: var(--card-text);
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    text-align: center;
+    padding: 10px;
+    transform: translateY(100%);
+    transition: transform 0.5s ease-in-out;
+    box-sizing: border-box;
+}
+
+/* Título no verso do cartão */
+.flip-card-back h2 {
+    font-size: 20px;
+    font-weight: 500;
+    margin-bottom: 5px;
+    padding: 5px 20px;
+    width: 100%;
+    line-height: 1.2;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    box-sizing: border-box;
+}
+
+/* Parágrafo no verso do cartão */
+.flip-card-back p {
+    font-size: 16px;
+    font-weight: 300;
+    padding: 5px 20px;
+    width: 100%;
+    line-height: 1.3;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    box-sizing: border-box;
+}
+
+/* Botão "Saiba mais" dentro do flip card */
+.saiba-mais-btn {
+    background-color: #015351;
+    color: var(--card-text);
+    border: none;
+    padding: 8px 16px;
+    border-radius: 20px;
+    margin-top: 10px;
+    cursor: pointer;
+    font-weight: normal;
+    opacity: 0;
+    transform: translateY(10px);
+    transition: opacity 0.3s ease, transform 0.3s ease, background-color 0.3s ease;
+    text-decoration: none;
+}
+
+/* Mostrar botão no hover/focus do card */
+.flip-card:hover .saiba-mais-btn,
+.flip-card.touch-focus .saiba-mais-btn {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Efeito hover no botão QUANDO o card está ativo */
+.flip-card:hover .saiba-mais-btn:hover,
+.flip-card.touch-focus .saiba-mais-btn:hover { /* :hover em touch é limitado */
+    background-color: var(--accent-color); /* Muda a cor de fundo no hover */
+    transform: translateY(0) scale(1.05); /* Adiciona scale ao estado ativo */
+}
+
+/* Efeito de deslizamento */
+.flip-card:hover .flip-card-front {
+    transform: translateY(-100%);
+}
+
+.flip-card:hover .flip-card-back {
+    transform: translateY(0);
+}
+
+/* Otimização para touch */
+@media (hover: none) {
+    .flip-card.touch-focus .flip-card-front {
+        transform: translateY(-100%);
+    }
+    
+    .flip-card.touch-focus .flip-card-back {
+        transform: translateY(0);
+    }
+}
+
+/* Botão de volta ao topo */
+.back-to-top {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: var(--accent-color);
+    color: var(--text-color);
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s, visibility 0.3s;
+    box-shadow: 0 2px 5px var(--shadow-color);
+    z-index: 999;
+}
+
+.back-to-top.visible {
+    opacity: 1;
+    visibility: visible;
+}
+
+.back-to-top i {
+    font-size: 24px;
+}
+
+/* Toggle de tema */
+.theme-toggle {
+    position: fixed;
+    bottom: 20px;
+    left: 20px;
+    background-color: var(--accent-color);
+    color: var(--text-color);
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    box-shadow: 0 2px 5px var(--shadow-color);
+    z-index: 999;
+}
+
+.theme-toggle i {
+    font-size: 24px;
+}
+
+/* Rodapé */
+footer {
+    background-color: var(--footer-bg);
+    color: var(--footer-text);
+    width: 100%;
+    padding: 20px 5%;
+    text-align: center;
+    margin-top: 50px;
+    box-shadow: 0 -2px 5px var(--shadow-color);
+}
+
+footer p {
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+footer a {
+    color: var(--accent-color);
+    text-decoration: none;
+    margin: 0 10px;
+}
+
+footer a:hover {
+    text-decoration: underline;
+}
+
+/* Ícone do footer */
+.footer-icon {
+    margin-right: 10px;
+    color: var(--accent-color);
+    font-size: 20px;
+    transition: transform 0.3s ease;
+}
+
+.footer-icon:hover {
+    transform: scale(1.2);
+}
+
+/* Redes sociais no footer */
+.social-icons {
+    display: flex;
+    justify-content: center;
+    margin-top: 15px;
+    gap: 20px;
+}
+
+.social-icons a {
+    color: var(--accent-color);
+    font-size: 24px;
+    transition: transform 0.3s ease;
+}
+
+.social-icons a:hover {
+    color: var(--accent-color);
+}
+
+.social-icons a i {
+    transition: transform 0.3s ease;
+}
+
+.social-icons a:hover i {
+    transform: scale(1.1);
+}
+
+.social-icons a img {
+    height: 19px; /* Ajustado para melhor alinhamento visual */
+    vertical-align: middle;
+    transition: transform 0.3s ease;
+}
+
+.social-icons a:hover img {
+    transform: scale(1.1);
+}
+
+/* Banner de cookies */
+.cookie-consent {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: var(--cookie-bg);
+    color: var(--cookie-text);
+    padding: 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 -2px 10px var(--shadow-color);
+    z-index: 9999;
+    transform: translateY(100%);
+    transition: transform 0.5s ease;
+}
+
+.cookie-consent.visible {
+    transform: translateY(0);
+}
+
+.cookie-consent p {
+    margin-right: 20px;
+    font-size: 14px;
+}
+
+.cookie-consent button {
+    background-color: var(--accent-color);
+    color: var(--text-color);
+    border: none;
+    padding: 8px 16px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+/* Menu overlay */
+.menu-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 998;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s, visibility 0.3s;
+}
+
+.menu-overlay.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+body.menu-open {
+    overflow: hidden;
+}
+
+/* Seção Destaque com Grid */
+#destaque {
+    padding: 40px 5%;
+    margin-top: 30px;
+}
+
+/* Grid de Destaque */
+.destaque-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* 3 colunas */
+    gap: 30px;
+    width: 90%;
+    max-width: 1200px;
+    margin: 30px auto;
+}
+
+/* Item individual de Destaque */
+.destaque-item {
+    background-color: var(--bg-color);
+    border-radius: 10px;
+    box-shadow: 0 4px 8px var(--shadow-color);
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Efeito Hover Moderno */
+.destaque-item:hover {
+    transform: translateY(-10px); /* Leve elevação */
+    box-shadow: 0 8px 16px var(--shadow-color); /* Sombra mais pronunciada */
+}
+
+.destaque-item:hover .destaque-imagem img {
+    transform: scale(1.05); /* Leve zoom na imagem */
+}
+
+/* Estilo para a imagem no item de destaque */
+.destaque-imagem {
+    height: 250px; /* Altura ajustada para grid */
+    overflow: hidden;
+    position: relative;
+}
+
+.destaque-imagem img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.4s ease; /* Transição suave para o zoom */
+}
+
+/* Estilo para o texto no item de destaque */
+.destaque-texto {
+    padding: 20px;
+}
+
+.destaque-texto h2 {
+    font-family: 'Oswald', sans-serif;
+    font-weight: 400;
+    font-size: 24px; /* Tamanho ajustado */
+    margin-bottom: 15px;
+    color: var(--text-color);
+}
+
+.destaque-texto p {
+    font-size: 15px;
+    line-height: 1.6;
+    margin-bottom: 15px;
+    color: var(--text-color);
+}
+
+/* Botão "Saiba mais" */
+.destaque-btn {
+    display: inline-block;
+    background-color: var(--card-bg);
+    color: var(--card-text);
+    padding: 10px 20px;
+    text-decoration: none;
+    border-radius: 5px;
+    margin-top: 10px;
+    font-weight: 500;
+    transition: background-color 0.3s ease;
+    text-align: center;
+    box-shadow: 0 2px 4px var(--shadow-color);
+}
+
+.destaque-btn:hover {
+    background-color: var(--accent-color);
+}
+
+/* Seção Contato */
+#contato {
+    padding: 40px 5%;
+    margin-top: 30px;
+}
+
+/* Container do formulário */
+.contato-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+    margin: 30px auto;
+    width: 90%;
+    max-width: 1200px;
+    align-items: start;
+}
+
+/* Estilo para a coluna de informações */
+.contato-info {
+    padding: 20px;
+    background-color: var(--bg-color);
+    border-radius: 10px;
+    box-shadow: 0 4px 8px var(--shadow-color);
+}
+
+.contato-info h2 {
+    font-family: 'Oswald', sans-serif;
+    font-weight: 400;
+    font-size: 28px;
+    margin-bottom: 20px;
+    color: var(--text-color);
+}
+
+.contato-info p {
+    font-size: 16px;
+    line-height: 1.6;
+    margin-bottom: 30px;
+    color: var(--text-color);
+}
+
+/* Detalhes de contato */
+.contato-detalhes {
+    margin-top: 30px;
+}
+
+.contato-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.contato-item i {
+    color: var(--card-bg);
+    font-size: 18px;
+    width: 30px;
+}
+
+.contato-item span {
+    color: var(--text-color);
+}
+
+/* Estilo para o formulário */
+.contato-form {
+    padding: 30px;
+    background-color: var(--bg-color);
+    border-radius: 10px;
+    box-shadow: 0 4px 8px var(--shadow-color);
+}
+
+/* Layout de duas colunas para nome e email */
+.form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    font-weight: 500;
+    margin-bottom: 8px;
+    color: var(--text-color);
+}
+
+.form-group input,
+.form-group textarea {
+    width: 100%;
+    padding: 12px 15px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-family: 'Roboto', sans-serif;
+    font-size: 15px;
+    background-color: var(--input-bg);
+    color: var(--input-text);
+    transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-color: var(--accent-color);
+    box-shadow: 0 0 0 2px rgba(167, 234, 38, 0.2);
+}
+
+.form-group textarea {
+    resize: vertical;
+    min-height: 120px;
+}
+
+/* Botão de envio */
+.contato-btn {
+    display: inline-block;
+    background-color: var(--card-bg);
+    color: var(--card-text);
+    padding: 12px 30px;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: transform 0.3s ease, background-color 0.3s ease;
+    box-shadow: 0 2px 4px var(--shadow-color);
+}
+
+.contato-btn:hover {
+    transform: translateY(-5px);
+    background-color: var(--accent-color);
+}
+
+/* Seções gerais */
+section {
+    width: 100%;
+    min-height: 200px;
+    padding: 0;
+}
+
+/* Seção de iniciativas */
+#iniciativas {
+    padding: 40px 5%;
+}
+
+/* Responsividade para tablets */
+@media (max-width: 768px) {
+    .grid-container {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    /* Ajuste na grid de destaque para tablets */
+    .destaque-grid {
+        grid-template-columns: 1fr; /* Uma coluna em tablets */
+    }
+    
+    .nav-menu {
+        display: none;
+        position: fixed;
+        top: 60px;
+        left: -100%;
+        width: 70%;
+        height: 100vh;
+        background-color: var(--header-bg);
+        flex-direction: column;
+        padding: 20px 0;
+        z-index: 999;
+        transition: left 0.3s ease;
+        box-shadow: 2px 0 5px var(--shadow-color);
+    }
+    
+    .nav-menu.active {
+        left: 0;
+        display: flex;
+    }
+    
+    .menu-toggle {
+        display: block;
+    }
+    
+    .nav-menu li {
+        margin: 15px 0;
+        text-align: center;
+    }
+    
+    .title-container h2 {
+        font-size: 28px;
+    }
+    
+    .flip-card-back h2 {
+        font-size: 18px;
+        font-weight: 500;
+    }
+    
+    .flip-card-back p {
+        font-size: 14px;
+    }
+
+    .search-container {
+        margin-left: 10px;
+    }
+    
+    .search-box.active {
+        width: 150px;
+    }
+    
+    .destaque-imagem {
+        height: 350px;
+        order: -1;
+    }
+    
+    .destaque-texto {
+        padding-right: 0;
+        text-align: center;
+    }
+    
+    .destaque-btn {
+        margin: 20px auto 0;
+    }
+    
+    /* Responsividade para a seção de contato em tablets */
+    .contato-container {
+        grid-template-columns: 1fr;
+        gap: 30px;
+    }
+    
+    .form-row {
+        grid-template-columns: 1fr;
+        gap: 0;
+    }
+}
+
+/* Responsividade para smartphones */
+@media (max-width: 480px) {
+    .grid-container {
+        grid-template-columns: 1fr;
+    }
+    
+    /* Grid de destaque mantém 1 coluna */
+    .destaque-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .title-container {
+        height: 250px;
+    }
+    
+    .title-container h2 {
+        font-size: 24px;
+    }
+    
+    .title-container .logo-below img {
+        width: 200px;
+    }
+    
+    .flip-card-back h2 {
+        font-size: 24px;
+        font-weight: 500;
+        margin-bottom: 8px;
+    }
+    
+    .flip-card-back p {
+        font-size: 14px;
+        font-weight: 300;
+        line-height: 1.4;
+    }
+
+    .cookie-consent {
+        flex-direction: column;
+        text-align: center;
+        padding: 10px;
+    }
+
+    .cookie-consent p {
+        margin-right: 0;
+        margin-bottom: 10px;
+    }
+
+    .theme-toggle, .back-to-top {
+        width: 40px;
+        height: 40px;
+    }
+
+    .theme-toggle i, .back-to-top i {
+        font-size: 20px;
+    }
+    
+    .search-container {
+        position: static;
+        margin-left: 5px;
+    }
+    
+    .search-box {
+        position: absolute;
+        right: 50px;
+        top: 10px;
+    }
+    
+    .search-box.active {
+        width: 120px;
+    }
+    
+    .destaque-imagem {
+        height: 250px;
+    }
+    
+    .carousel-control {
+        width: 36px;
+        height: 36px;
+    }
+
+    .carousel-control i {
+        font-size: 16px;
+    }
+
+    .carousel-controls {
+        margin-bottom: 10px;
+    }
+}
+
+/* --- Estilos para Páginas de Iniciativa --- */
+
+/* Seção Hero da Iniciativa */
+.initiative-hero {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 400px; /* Altura ajustável */
+    background-size: cover;
+    background-position: center;
+    background-color: var(--header-bg); /* Fallback de cor */
+    color: #ffffff;
+    text-align: center;
+    padding: 40px 20px;
+    position: relative; /* Para sobreposição se necessário */
+}
+
+.initiative-hero::before { /* Overlay opcional para escurecer imagem */
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.4); /* Levemente mais escuro para contraste */
+    z-index: 1;
+}
+
+.initiative-hero > * { /* Garante que conteúdo fique acima do overlay */
+    position: relative;
+    z-index: 2;
+}
+
+.initiative-hero h1 {
+    color: var(--header-text); /* Cor branca para o título */
+    font-size: 3rem;
+    font-weight: 700;
+}
+
+.initiative-hero-btn {
+    background-color: #ffffff;
+    color: var(--header-bg);
+    padding: 14px 35px;
+    border: none;
+    border-radius: 30px;
+    font-size: 18px;
+    font-weight: bold;
+    font-family: 'Roboto', sans-serif;
+    cursor: pointer;
+    transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease, color 0.3s ease;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    margin-top: 15px;
+    text-decoration: none; /* Garante que não haja sublinhado */
+}
+
+.initiative-hero-btn:hover {
+    transform: translateY(-3px);
+}
+
+/* Seção Sobre a Iniciativa */
+.about-initiative,
+.testimonials,
+.results-section {
+    padding: 60px 5%;
+    text-align: center;
+    border-bottom: 1px solid rgba(0,0,0,0.1); /* Separador sutil */
+}
+
+/* Remover borda inferior da última seção antes do footer */
+main > section:last-of-type {
+    border-bottom: none;
+}
+
+.section-title {
+    font-family: 'Oswald', sans-serif;
+    font-size: 32px;
+    font-weight: 400;
+    margin-bottom: 40px;
+    color: var(--text-color);
+}
+
+.about-grid,
+.results-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 30px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.about-item,
+.result-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.about-item .icon-circle,
+.result-item .result-circle {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    background-color: var(--header-bg);
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #ffffff;
+    font-family: 'Roboto', sans-serif;
+    font-size: 36px;
+    font-weight: 700;
+}
+
+.about-item .icon-circle i {
+    font-size: 1.5em; /* Tamanho do ícone */
+    color: #ffffff; /* Cor do ícone */
+}
+
+.about-item p {
+    font-size: 1em;
+    line-height: 1.6;
+    color: var(--text-color);
+    margin-top: 15px;
+}
+
+/* Seção Testimonials */
+.testimonials {
+    background-color: rgba(0,0,0,0.03); /* Fundo levemente diferente */
+}
+
+.testimonials-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 40px;
+    max-width: 1000px;
+    margin: 0 auto;
+    text-align: left;
+}
+
+.testimonial-item {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    padding: 25px; /* Aumenta padding */
+    background-color: var(--bg-color);
+    border-radius: 8px;
+    box-shadow: 0 2px 5px var(--shadow-color);
+}
+
+.testimonial-item img {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.testimonial-text p {
+    font-style: italic;
+    margin-bottom: 10px;
+    color: var(--text-color);
+}
+
+.testimonial-text cite {
+    font-weight: bold;
+    font-style: normal;
+    color: var(--header-bg);
+    font-family: 'Roboto', sans-serif;
+}
+
+/* Responsividade para seções da página de iniciativa */
+@media (max-width: 992px) {
+    .about-grid,
+    .results-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    .testimonials-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 576px) {
+    .initiative-hero h1 {
+        font-size: 32px;
+    }
+    /* Ajuste descrição no mobile */
+    .hero-description {
+        font-size: 16px;
+        margin-bottom: 25px; /* Ajusta espaço antes do botão */
+    }
+    .initiative-hero-btn {
+        font-size: 16px;
+        padding: 12px 25px;
+    }
+    .about-grid,
+    .results-grid {
+        grid-template-columns: 1fr;
+        gap: 40px; /* Aumenta gap vertical */
+    }
+    .section-title {
+        font-size: 28px;
+    }
+    .about-item .icon-circle,
+    .result-item .result-circle {
+        width: 80px;
+        height: 80px;
+        font-size: 28px;
+    }
+    .testimonial-item {
+        flex-direction: column;
+        text-align: center;
+    }
+}
+
+.result-item {
+    text-align: center;
+}
+
+.result-item p {
+    font-size: 15px;
+    line-height: 1.5;
+    color: var(--text-color);
+    margin-top: 15px;
+    font-family: 'Roboto', sans-serif;
+}
+
+.result-circle {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    background-color: var(--header-bg);
+    color: var(--header-text);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 36px;
+    font-weight: bold;
+    font-family: 'Oswald', sans-serif;
+    text-align: center;
+    line-height: 1.2;
+}
+
+/* Estilo para descrição no Hero */
+.hero-description {
+    font-size: 1.5rem; /* 24px */
+    font-weight: 300;
+    color: #ffffff;
+    margin-top: 10px;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.7);
+}
+
+/* Aplica a fonte globalmente ao widget se a variável não for suficiente */
+.n8n-chat {
+    font-family: var(--chat--font-family, 'Roboto', sans-serif);
+}
+
+/* Esconder o botão flutuante padrão do n8n-chat */
+.n8n-chat-toggle {
+    display: none !important; /* Usa !important para garantir a sobreposição */
+}
+
+/* Adiciona a imagem antes do título no cabeçalho do chat */
+.n8n-chat .chat-heading h1::before {
+    content: ''; /* Necessário para pseudo-elementos */
+    display: inline-block; /* Para permitir definir tamanho e margem */
+    width: 1.2em; /* Largura relativa ao tamanho da fonte */
+    height: 1.2em; /* Altura relativa ao tamanho da fonte */
+    margin-right: 0.4em; /* Espaço entre a imagem e o texto */
+    background-image: url('https://static.wixstatic.com/media/c96204_a2dfdfad8e09422f8c8ed939f7d7daa3~mv2.png');
+    background-size: contain; /* Ajusta a imagem para caber */
+    background-repeat: no-repeat;
+    background-position: center;
+    vertical-align: text-bottom; /* Tenta alinhar com a base do texto */
+}
+
+/* --- Estilos para o novo card de resultados melhorado --- */
+.results-summary-card {
+    max-width: 900px;
+    margin: 40px auto 0;
+    padding: 30px 40px;
+    background-color: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.05);
+    border: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+[data-theme="dark"] .results-summary-card {
+    background-color: #2c2c2c;
+    border-color: rgba(255, 255, 255, 0.1);
+}
+
+.summary-item {
+    display: flex;
+    align-items: center;
+    gap: 25px;
+}
+
+.summary-item:not(:last-child) {
+    padding-bottom: 25px;
+    margin-bottom: 25px;
+    border-bottom: 1px solid #e9e9e9;
+}
+
+[data-theme="dark"] .summary-item:not(:last-child) {
+    border-bottom-color: rgba(255, 255, 255, 0.15);
+}
+
+.summary-icon {
+    font-size: 24px;
+    color: var(--header-bg);
+    background-color: var(--accent-color);
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    transition: transform 0.3s ease;
+}
+
+.summary-item:hover .summary-icon {
+    transform: scale(1.1);
+}
+
+.summary-text h3 {
+    font-family: 'Oswald', sans-serif;
+    font-size: 22px;
+    color: var(--text-color);
+    margin-bottom: 8px;
+    text-align: left;
+}
+
+.summary-text p {
+    font-size: 16px;
+    line-height: 1.6;
+    color: var(--text-color);
+    opacity: 0.85;
+}
