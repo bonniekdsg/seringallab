@@ -1421,3 +1421,102 @@ main > section:last-of-type {
     color: var(--text-color);
     opacity: 0.85;
 }
+
+/* --- Estilos para a nova seção Sobre --- */
+#sobre {
+    padding-top: 40px;
+    padding-bottom: 60px;
+}
+
+.about-section-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 50px;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.about-text-content h2 {
+    font-family: 'Oswald', sans-serif;
+    font-size: 32px;
+    color: var(--text-color);
+    margin-bottom: 20px;
+}
+
+.about-text-content p {
+    font-size: 17px;
+    line-height: 1.7;
+    color: var(--text-color);
+    opacity: 0.9;
+    margin-bottom: 20px;
+}
+
+.about-btn {
+    margin-top: 20px;
+    display: inline-block;
+}
+
+.about-image-content img {
+    width: 100%;
+    height: auto;
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+.hero-description {
+    font-size: 1.5rem; /* 24px */
+    font-weight: 300;
+    color: #ffffff;
+    margin-top: 10px;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.7);
+}
+
+@media (max-width: 992px) {
+    .about-grid,
+    .testimonials-grid,
+    .results-grid {
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    }
+    .testimonials-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .about-section-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 576px) {
+    .initiative-hero h1 {
+        font-size: 32px;
+    }
+    /* Ajuste descrição no mobile */
+    .hero-description {
+        font-size: 16px;
+        margin-bottom: 25px; /* Ajusta espaço antes do botão */
+    }
+    .initiative-hero-btn {
+        font-size: 16px;
+        padding: 12px 25px;
+    }
+    .about-grid,
+    .results-grid {
+        grid-template-columns: 1fr;
+        gap: 40px; /* Aumenta gap vertical */
+    }
+    .section-title {
+        font-size: 28px;
+    }
+    .about-item .icon-circle,
+    .result-item .result-circle {
+        width: 80px;
+        height: 80px;
+        font-size: 28px;
+    }
+    .testimonial-item {
+        flex-direction: column;
+        text-align: center;
+    }
+}
