@@ -737,29 +737,27 @@ body.menu-open {
 }
 
 .destaque-texto p {
-    font-size: 15px;
+    font-size: 1rem;
     line-height: 1.6;
-    margin-bottom: 15px;
     color: var(--text-color);
 }
 
 /* Botão "Saiba mais" */
 .destaque-btn {
     display: inline-block;
-    background-color: var(--card-bg);
-    color: var(--card-text);
+    background-color: var(--header-bg);
+    color: var(--header-text);
     padding: 10px 20px;
     text-decoration: none;
-    border-radius: 5px;
-    margin-top: 10px;
+    border-radius: 25px;
+    transition: background-color 0.3s ease, transform 0.3s ease;
     font-weight: 500;
-    transition: background-color 0.3s ease;
-    text-align: center;
-    box-shadow: 0 2px 4px var(--shadow-color);
+    margin-top: 15px;
 }
 
 .destaque-btn:hover {
     background-color: var(--accent-color);
+    transform: translateY(-2px);
 }
 
 /* Seção Contato */
@@ -876,21 +874,19 @@ body.menu-open {
 
 /* Botão de envio */
 .contato-btn {
-    display: inline-block;
-    background-color: var(--card-bg);
-    color: var(--card-text);
-    padding: 12px 30px;
+    width: 100%;
+    padding: 12px;
+    background-color: var(--header-bg);
+    color: var(--header-text);
     border: none;
-    border-radius: 5px;
-    font-size: 16px;
-    font-weight: 500;
+    border-radius: 25px;
     cursor: pointer;
-    transition: transform 0.3s ease, background-color 0.3s ease;
-    box-shadow: 0 2px 4px var(--shadow-color);
+    font-size: 1rem;
+    font-weight: 500;
+    transition: background-color 0.3s ease;
 }
 
 .contato-btn:hover {
-    transform: translateY(-5px);
     background-color: var(--accent-color);
 }
 
@@ -1264,30 +1260,27 @@ main > section:last-of-type {
 
 @media (max-width: 576px) {
     .initiative-hero h1 {
-        font-size: 32px;
+        font-size: 2rem;
     }
-    /* Ajuste descrição no mobile */
     .hero-description {
-        font-size: 16px;
-        margin-bottom: 25px; /* Ajusta espaço antes do botão */
+        font-size: 1rem;
     }
     .initiative-hero-btn {
-        font-size: 16px;
-        padding: 12px 25px;
+        padding: 10px 20px;
+        font-size: 0.9rem;
     }
     .about-grid,
-    .results-grid {
+    .testimonials-grid {
         grid-template-columns: 1fr;
-        gap: 40px; /* Aumenta gap vertical */
     }
     .section-title {
-        font-size: 28px;
+        font-size: 1.5rem;
     }
     .about-item .icon-circle,
-    .result-item .result-circle {
-        width: 80px;
-        height: 80px;
-        font-size: 28px;
+    .result-circle {
+        width: 70px;
+        height: 70px;
+        font-size: 1.8rem;
     }
     .testimonial-item {
         flex-direction: column;
@@ -1489,16 +1482,14 @@ main > section:last-of-type {
 
 @media (max-width: 576px) {
     .initiative-hero h1 {
-        font-size: 32px;
+        font-size: 2rem;
     }
-    /* Ajuste descrição no mobile */
     .hero-description {
-        font-size: 16px;
-        margin-bottom: 25px; /* Ajusta espaço antes do botão */
+        font-size: 1rem;
     }
     .initiative-hero-btn {
-        font-size: 16px;
-        padding: 12px 25px;
+        padding: 10px 20px;
+        font-size: 0.9rem;
     }
     .about-grid,
     .results-grid {
@@ -1506,16 +1497,20 @@ main > section:last-of-type {
         gap: 40px; /* Aumenta gap vertical */
     }
     .section-title {
-        font-size: 28px;
+        font-size: 1.5rem;
     }
     .about-item .icon-circle,
     .result-item .result-circle {
-        width: 80px;
-        height: 80px;
-        font-size: 28px;
+        width: 70px;
+        height: 70px;
+        font-size: 1.8rem;
     }
     .testimonial-item {
         flex-direction: column;
         text-align: center;
     }
+}
+
+.btn-arredondado {
+    border-radius: 25px !important;
 }
